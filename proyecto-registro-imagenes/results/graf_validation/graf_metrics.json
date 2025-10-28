@@ -1,0 +1,66 @@
+[
+  {
+    "pair": "img1.ppm - img2.ppm",
+    "detector": "sift",
+    "img1_name": "img1.ppm",
+    "img2_name": "img2.ppm",
+    "keypoints_img1": 2674,
+    "keypoints_img2": 3062,
+    "matches": 1103,
+    "match_mean_distance": 117.48470143156493,
+    "match_std_distance": 47.01362156855789,
+    "inliers": 1035,
+    "inlier_ratio": 93.83499546690844,
+    "homography": [
+      [
+        0.8804513144859224,
+        0.3152751546064738,
+        -40.24027424152019
+      ],
+      [
+        -0.18257856248584486,
+        0.9362515121087303,
+        153.45194876479084
+      ],
+      [
+        0.00019881243810037686,
+        -1.803485959237712e-05,
+        0.9999999999999999
+      ]
+    ],
+    "success": true,
+    "mean_pixel_difference": 65.21189975583287
+  },
+  {
+    "pair": "img1.ppm - img3.ppm",
+    "detector": "sift",
+    "img1_name": "img1.ppm",
+    "img2_name": "img3.ppm",
+    "keypoints_img1": 2674,
+    "keypoints_img2": 3506,
+    "matches": 538,
+    "match_mean_distance": 175.6150552047673,
+    "match_std_distance": 56.55783940328325,
+    "inliers": 426,
+    "inlier_ratio": 79.182156133829,
+    "homography": [
+      [
+        0.7692616177534423,
+        -0.2903184629658334,
+        223.15234885020263
+      ],
+      [
+        0.33787317731402194,
+        1.0269766437419428,
+        -80.06191827435586
+      ],
+      [
+        0.00035255235287313426,
+        -2.298284462075773e-06,
+        1.0
+      ]
+    ],
+    "success": true,
+    "mean_pixel_difference": 62.927337170104316
+  }
+]
