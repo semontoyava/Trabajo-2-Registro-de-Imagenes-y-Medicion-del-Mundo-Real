@@ -22,7 +22,7 @@ Este proyecto implementa un sistema completo de **registro de imágenes** (image
 
 
 
-1. ✅ **Validar algoritmos** con el dataset Graf (imágenes sintéticas con ground truth)## 🎯 Objetivo del Proyecto
+1. ✅ **Validar algoritmos** con el dataset Graf o una imágen sintética con ground truth ## 🎯 Objetivo del Proyecto
 
 2. 📷 **Crear panoramas** fusionando múltiples vistas del mismo lugar
 
