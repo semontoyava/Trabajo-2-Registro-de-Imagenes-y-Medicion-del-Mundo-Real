@@ -604,7 +604,7 @@ Por defecto, si no se ejecuta el script download_and_process_graf.py, se crean l
 
 **Figura 2: Matches Antes/Después de RANSAC**
 
-[Visualización de matches con inliers en verde](results/synthetic_validation/matchedkeypoints.png)
+![Visualización de matches con inliers en verde](results/synthetic_validation/matchedkeypoints.png)
 
 
 **Figura 3: Imagen Registrada**
@@ -776,6 +776,7 @@ Por defecto, si no se ejecuta el script download_and_process_graf.py, se crean l
 - SIFT produce más matches de alta calidad (ratio test más efectivo)
 - ORB requiere threshold más laxo (ratio=0.8 en lugar de 0.75)
 
+
 **Registro:**
 - Ambos logran registros exitosos con inlier ratio >60%
 - SIFT es más robusto a cambios de escala (IMG03 tiene diferente resolución)
@@ -802,17 +803,22 @@ Por defecto, si no se ejecuta el script download_and_process_graf.py, se crean l
 
 ### 5.2 Análisis de Errores y Limitaciones
 
-#### 5.2.1 Errores en Validación con Graf
+#### 5.2.1 Errores en Validación con imágenes sintéticas
 
 **Degradación con ángulo:**
-- RMSE aumenta de 0.85 px (10°) a 3.42 px (50°)
-- Causa: Menos keypoints visibles, mayor distorsión perspectiva
-- Solución: Usar más imágenes intermedias
+- RMSE aumenta de 0.56 px (10°) a 1.22 px (30°)
+- Causa: Menos keypoints visibles, pérdida de información al rotar, mayor distorsión perspectiva
+- Solución: Usar más imágenes intermedias o un treshold de reproyección más estricto (3 px en lugar de 5 px)
 
-**Error de escala:**
-- Aumenta de 1.2% (10°) a 7.8% (50°)
-- Causa: Dificultad en estimar cambio de escala con perspectiva extrema
+**Error de traslación y escala:**
+- Error de traslación y escala es menor que cuando se realiza la rotación
+- Se puede presentar dificultad al estimar keypoints en imagen escalada si hay cambio de perspectiva extrema
 - Solución: Usar descriptor invariante a escala (SIFT) o estimar affine
+
+**Error RMSE imagen con transformaciones conocidas:**
+- El error RMSE de la imagen con transformaciones conocidas está entre 2 a 3 pixeles, el registro funciona correctamente, pero hay ligera pérdida de precisión, esto se debe a:
+-  Hay un número limitado de inliers en RANSAC, lo que hace que la homografía fluctue ligeramente.
+- Threshold de reproyección alto, ransacReprojThreshold se estableció en 5.0 px, bajarlo a 3.0 px podría mejorar el ajuste pero se corre el riesgo de que no se encuentren suficientes inliers y no haya convergencia.
 
 #### 5.2.2 Limitaciones en Registro del Comedor
 
