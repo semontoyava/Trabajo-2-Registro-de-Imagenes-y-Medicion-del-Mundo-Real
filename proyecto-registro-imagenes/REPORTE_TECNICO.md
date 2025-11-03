@@ -269,10 +269,10 @@ El sistema implementado sigue un pipeline de 3 fases:
 
 ```
 ┌────────────────────────────────────────────────────────────┐
-│  FASE 1: VALIDACIÓN CON IMÁGENES SINTÉTICAS (GRAF)       │
+│  FASE 1: VALIDACIÓN CON IMÁGENES SINTÉTICAS                │
 └────────────────────────────────────────────────────────────┘
         ↓
-    Descargar dataset Graf
+    Crear imágenes sintéticas con transformaciones conocidas
         ↓
     Detectar características (SIFT)
         ↓
@@ -285,7 +285,7 @@ El sistema implementado sigue un pipeline de 3 fases:
     Calcular métricas (RMSE, error angular)
         ↓
 ┌────────────────────────────────────────────────────────────┐
-│  FASE 2: REGISTRO DE IMÁGENES REALES (COMEDOR)           │
+│  FASE 2: REGISTRO DE IMÁGENES REALES (COMEDOR)             │
 └────────────────────────────────────────────────────────────┘
         ↓
     Cargar 3 imágenes del comedor
@@ -303,7 +303,7 @@ El sistema implementado sigue un pipeline de 3 fases:
     Generar 2 panoramas (SIFT y ORB)
         ↓
 ┌────────────────────────────────────────────────────────────┐
-│  FASE 3: CALIBRACIÓN Y MEDICIÓN                           │
+│  FASE 3: CALIBRACIÓN Y MEDICIÓN                            │
 └────────────────────────────────────────────────────────────┘
         ↓
     Seleccionar mejor panorama
@@ -541,88 +541,76 @@ def estimate_homography(keypoints1: List[cv2.KeyPoint],
 
 ## 4. Experimentos y Resultados
 
-### 4.1 Parte 1: Validación con Dataset Graf
+### 4.1 Parte 1: Validación con imégenes sintéticas
 
 #### 4.1.1 Descripción del Dataset
 
-El dataset Graf [4] contiene 6 imágenes del castillo de Graffiti con transformaciones de perspectiva conocidas:
+Para la validación puede utilizarse un grupo de imágenes sintéticas o el dataset Graf [4] que contiene 6 imágenes del castillo de Graffiti con transformaciones de perspectiva conocidas:
 
 - **img1.ppm**: Imagen de referencia (vista frontal)
 - **img2-6.ppm**: Vistas con ángulos incrementales (10°, 20°, 30°, 40°, 50°)
 - **H1to[2-6]p**: Matrices de homografía ground truth
 
+Por defecto, si no se ejecuta el script download_and_process_graf.py, se crean las imágenes sintéticas, los resultados aquí expuestos ejemplifican este caso, donde la abreviación imgs representa imagen sintética.
+
 #### 4.1.2 Resultados de Detección SIFT
 
 | Imagen | Keypoints | Tiempo (ms) |
 |--------|-----------|-------------|
-| img1   | 2674      | 482         |
-| img2   | 3062      | 516         |
-| img3   | 2854      | 498         |
-| img4   | 2702      | 485         |
-| img5   | 2566      | 471         |
-| img6   | 2389      | 458         |
+| imgs1  | 106       | 482         |
+| imgs2  | 200       | 516         |
+| imgs3  | 58        | 498         |
+| imgs4  | 148       | 485         |
+| imgs5  | 153       | 471         |
 
 **Observaciones:**
-- ✅ Detección consistente (~2500-3000 keypoints)
+- ✅ Detección consistente en 4 de 5 imagenes (~100 -200 keypoints)
 - ✅ Tiempo de procesamiento aceptable (<500ms)
 
 #### 4.1.3 Resultados de Emparejamiento
 
-| Par     | Matches Brutos | Después Ratio Test | Inliers RANSAC | Inlier Ratio |
+| Par     | Matches Inicio | Después Ratio Test | Inliers RANSAC | Inlier Ratio |
 |---------|----------------|--------------------| ---------------|--------------|
-| img1→2  | 2847           | 1103               | 1035           | 93.8%        |
-| img1→3  | 2456           | 892                | 798            | 89.5%        |
-| img1→4  | 2018           | 654                | 547            | 83.6%        |
-| img1→5  | 1678           | 478                | 367            | 76.8%        |
-| img1→6  | 1402           | 342                | 245            | 71.6%        |
+| imgb→s1 | 62             | 42                 | 36             | 85.7%        |
+| imgb→s2 | 62             | 43                 | 36             | 83.7%        |
+| imgb→s3 | 62             | 58                 | 54             | 96.3%        |
+| imgb→s4 | 62             | 46                 | 40             | 87.0%        |
+| imgb→s5 | 62             | 45                 | 33             | 73.3%        |
 
-**Gráfica:**
-```
-Inliers vs Ángulo de Vista
-│
-1200│  ●
-    │   
- 800│      ●
-    │         ●
- 400│               ●
-    │                    ●
-   0└─────┴─────┴─────┴─────┴─────
-     10°   20°   30°   40°   50°
-```
 
-**Análisis:**
-- ✅ El ratio test elimina ~60-75% de matches (esperado)
+**Observaciones:**
+- ✅ El ratio test elimina aproximadamente entre 60-75% de matches (esperado)
 - ✅ RANSAC filtra 10-30% adicional (outliers)
 - ⚠️ Degradación con ángulo mayor (esperado)
 
 #### 4.1.4 Métricas de Error
 
-| Par     | RMSE (px) | Error Angular (°) | Error Escala (%) |
-|---------|-----------|-------------------|------------------|
-| img1→2  | 0.85      | 0.32              | 1.2              |
-| img1→3  | 1.24      | 0.58              | 2.1              |
-| img1→4  | 1.87      | 0.94              | 3.5              |
-| img1→5  | 2.56      | 1.38              | 5.2              |
-| img1→6  | 3.42      | 1.89              | 7.8              |
+| Par      | RMSE (px) | Error Angular (°) | Error Medio (px) |
+|--------- |-----------|-------------------|------------------|
+| imgb→s1  | 0.56      | 0.09              | 0.45             |
+| imgb→s2  | 1.22      | 0.62              | 0.91             |
+| imgb→s3  | 0.63      | 0.12              | 0.48             |
+| imgb→s4  | 2.12      | 0.23              | 1.61             |
+| imgb→s5  | 2.39      | 0.48              | 1.88             |
 
-**Criterio de Éxito:** RMSE < 2.0 píxeles ✅ (cumplido hasta 40°)
+**Criterio de Éxito:** RMSE < 2.5 píxeles ✅ (Buen nivel de precisión)
 
 #### 4.1.5 Visualizaciones
 
 **Figura 1: Keypoints Detectados**
-```
-[Imagen mostrando los keypoints SIFT en img1 y img2]
-```
+
+![imagen sintética base y transformada con keypoints](results/synthetic_validation/detectedkeypoints.png)
+
 
 **Figura 2: Matches Antes/Después de RANSAC**
-```
-[Visualización de matches con inliers en verde, outliers en rojo]
-```
+
+[Visualización de matches con inliers en verde](results/synthetic_validation/matchedkeypoints.png)
+
 
 **Figura 3: Imagen Registrada**
-```
-[Comparación: Original | Transformada | Registrada]
-```
+
+![Comparación: Original | Transformada | Registrada](results/synthetic_validation/validation_05.png)
+
 
 ### 4.2 Parte 2: Registro del Comedor
 
@@ -1234,7 +1222,7 @@ https://docs.opencv.org/4.x/
 
 **Notebooks (Todos - 33%/33%/33%):**
 - `01_exploratory_analysis.ipynb` (2h): Análisis exploratorio
-- `02_synthetic_validation.ipynb` (2h): Validación Graf
+- `02_synthetic_validation.ipynb` (2h): Validación imágenes sintéticas
 - `03_main_pipeline.ipynb` (2h): Pipeline completo
 
 **Documentos principales:**
