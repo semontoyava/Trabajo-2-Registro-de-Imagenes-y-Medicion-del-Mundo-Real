@@ -816,8 +816,8 @@ Por defecto, si no se ejecuta el script download_and_process_graf.py, se crean l
 - Solución: Usar descriptor invariante a escala (SIFT) o estimar affine
 
 **Error RMSE imagen con transformaciones conocidas:**
-- El error RMSE de la imagen con transformaciones conocidas está entre 2 a 3 pixeles, el registro funciona correctamente, pero hay ligera pérdida de precisión, esto se debe a:
--  Hay un número limitado de inliers en RANSAC, lo que hace que la homografía fluctue ligeramente.
+El error RMSE de la imagen con transformaciones conocidas está entre 2 a 3 pixeles, el registro funciona correctamente, pero hay ligera pérdida de precisión, esto se debe a:
+-  Número limitado de inliers en RANSAC, lo que hace que la homografía fluctue ligeramente y el error aumente.
 - Threshold de reproyección alto, ransacReprojThreshold se estableció en 5.0 px, bajarlo a 3.0 px podría mejorar el ajuste pero se corre el riesgo de que no se encuentren suficientes inliers y no haya convergencia.
 
 #### 5.2.2 Limitaciones en Registro del Comedor
@@ -826,14 +826,14 @@ Por defecto, si no se ejecuta el script download_and_process_graf.py, se crean l
 - IMG01 e IMG03 tienen poco solapamiento directo
 - Solución implementada: Usar IMG02 como puente
 
-**Diferente resolución:**
+**Diferente resolución entre las imágenes del comedor:**
 - IMG03: 988×1317 vs IMG01/02: 988×741
 - Impacto: Diferentes densidades de keypoints
 - SIFT maneja esto mejor que ORB
 
 **Iluminación:**
 - Variaciones leves de iluminación entre imágenes
-- Impacto mínimo (SIFT es robusto a cambios de iluminación moderados)
+- El impacto es mínimo ya que SIFT es robusto a cambios de iluminación moderados
 
 #### 5.2.3 Limitaciones en Medición
 
@@ -1044,7 +1044,7 @@ mesh = poisson_reconstruction(point_cloud)
    - Fusión de múltiples imágenes
    - Calibración y medición interactiva
 
-2. ✅ **Validación exitosa con Graf:**
+2. ✅ **Validación exitosa con imágenes sintéticas:**
    - RMSE < 2.0 píxeles para ángulos <40°
    - Inlier ratio >70% en todos los casos
    - Resultados comparables con literatura [4]
