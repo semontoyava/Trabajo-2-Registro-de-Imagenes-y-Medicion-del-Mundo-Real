@@ -198,7 +198,7 @@ cd Trabajo-2-Registro-de-Imagenes-y-Medicion-del-Mundo-Real- Calcular incertidum
 
 ```cmd### Requisitos Previos
 
-python -m venv .venv
+python -m venv .venv #py -m venv .venv
 
 .venv\Scripts\activate- Python 3.8 o superior
 

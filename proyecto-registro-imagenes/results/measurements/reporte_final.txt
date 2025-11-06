@@ -1,0 +1,12 @@
+============================================================
+REPORTE DE MEDICIONES
+============================================================
+
+CALIBRACIÓN:
+  Objeto de referencia: Cuadro Virgen
+  Dimensión real: 117.00 cm
+  Escala: 2.56 píxeles/cm
+  Resolución: 0.3900 cm/píxel
+
+MEDICIONES (0):
+============================================================

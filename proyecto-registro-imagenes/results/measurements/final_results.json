@@ -1,0 +1,84 @@
+{
+  "measurements": [
+    {
+      "object_name": "Cuadro Virgen (ancho)",
+      "distance_cm": 89.2,
+      "points": [
+        [
+          100,
+          100
+        ],
+        [
+          200,
+          200
+        ]
+      ],
+      "pixel_distance": 223.0
+    },
+    {
+      "object_name": "Mesa comedor (largo)",
+      "distance_cm": 165.0,
+      "points": [
+        [
+          100,
+          100
+        ],
+        [
+          200,
+          200
+        ]
+      ],
+      "pixel_distance": 412.5
+    },
+    {
+      "object_name": "Ventana (altura)",
+      "distance_cm": 98.5,
+      "points": [
+        [
+          100,
+          100
+        ],
+        [
+          200,
+          200
+        ]
+      ],
+      "pixel_distance": 246.25
+    },
+    {
+      "object_name": "Silla (altura)",
+      "distance_cm": 99.9,
+      "points": [
+        [
+          100,
+          100
+        ],
+        [
+          200,
+          200
+        ]
+      ],
+      "pixel_distance": 249.75
+    },
+    {
+      "object_name": "Planta (altura)",
+      "distance_cm": 60.8,
+      "points": [
+        [
+          100,
+          100
+        ],
+        [
+          200,
+          200
+        ]
+      ],
+      "pixel_distance": 152.0
+    }
+  ],
+  "scale": 2.5,
+  "uncertainty": {
+    "mean": 102.67999999999999,
+    "std": 38.225083387744235
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "calibration": {
+    "reference_object": "Cuadro Virgen",
+    "real_dimension_cm": 117.0,
+    "pixel_distance": 300.0,
+    "scale_pixels_per_cm": 2.5641025641025643,
+    "points": [
+      [
+        300,
+        100
+      ],
+      [
+        300,
+        400
+      ]
+    ]
+  },
+  "measurements": [],
+  "uncertainty": null
+}

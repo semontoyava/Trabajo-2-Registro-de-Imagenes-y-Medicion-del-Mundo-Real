@@ -135,7 +135,7 @@ def compute_panorama_size(img1_shape: Tuple[int, int],
         [1, 0, -x_min],
         [0, 1, -y_min],
         [0, 0, 1]
-    ])
+    ], dtype=np.float32)
     
     # Dimensiones del panorama
     panorama_width = x_max - x_min
@@ -373,6 +373,131 @@ def stitch_multiple_images(images: List[np.ndarray],
     
     logger.info("Panorama completado")
     return panorama
+
+
+def evaluate_registration_quality(img1: np.ndarray, img2: np.ndarray, 
+                                 H: np.ndarray, matches: List[cv2.DMatch],
+                                 keypoints1: List[cv2.KeyPoint], 
+                                 keypoints2: List[cv2.KeyPoint]) -> Dict[str, float]:
+    """
+    Evalúa la calidad del registro entre dos imágenes.
+    
+    Args:
+        img1 (np.ndarray): Primera imagen
+        img2 (np.ndarray): Segunda imagen
+        H (np.ndarray): Matriz de homografía estimada
+        matches (List[cv2.DMatch]): Matches entre keypoints
+        keypoints1 (List[cv2.KeyPoint]): Keypoints de la primera imagen
+        keypoints2 (List[cv2.KeyPoint]): Keypoints de la segunda imagen
+        
+    Returns:
+        Dict[str, float]: Métricas de calidad del registro
+    """
+    # Extraer puntos emparejados
+    pts1 = np.float32([keypoints1[m.queryIdx].pt for m in matches]).reshape(-1, 1, 2)
+    pts2 = np.float32([keypoints2[m.trainIdx].pt for m in matches]).reshape(-1, 1, 2)
+    
+    # Calcular error de reproyección
+    pts2_reprojected = cv2.perspectiveTransform(pts1, H)
+    reprojection_errors = np.linalg.norm(pts2 - pts2_reprojected, axis=2).flatten()
+    
+    # Calcular superposición aproximada
+    h1, w1 = img1.shape[:2]
+    h2, w2 = img2.shape[:2]
+    
+    # Área de la primera imagen
+    area1 = h1 * w1
+    
+    # Transformar esquinas de img1 a img2
+    corners1 = np.float32([[0, 0], [0, h1], [w1, h1], [w1, 0]]).reshape(-1, 1, 2)
+    corners1_transformed = cv2.perspectiveTransform(corners1, H)
+    
+    # Calcular intersección aproximada (simplificada)
+    x_min = max(0, np.min(corners1_transformed[:, 0, 0]))
+    x_max = min(w2, np.max(corners1_transformed[:, 0, 0]))
+    y_min = max(0, np.min(corners1_transformed[:, 0, 1]))
+    y_max = min(h2, np.max(corners1_transformed[:, 0, 1]))
+    
+    if x_max > x_min and y_max > y_min:
+        overlap_area = (x_max - x_min) * (y_max - y_min)
+        overlap_ratio = overlap_area / area1
+    else:
+        overlap_ratio = 0.0
+    
+    quality_metrics = {
+        'mean_reprojection_error': float(np.mean(reprojection_errors)),
+        'median_reprojection_error': float(np.median(reprojection_errors)),
+        'max_reprojection_error': float(np.max(reprojection_errors)),
+        'std_reprojection_error': float(np.std(reprojection_errors)),
+        'overlap_ratio': float(overlap_ratio),
+        'num_inliers': len(matches),
+        'inlier_ratio': len(matches) / len(matches) if len(matches) > 0 else 0.0
+    }
+    
+    return quality_metrics
+
+
+def adaptive_registration_parameters(img1: np.ndarray, img2: np.ndarray, 
+                                   matches: List[cv2.DMatch]) -> Dict[str, any]:
+    """
+    Determina parámetros adaptativos para el registro basado en las características de las imágenes.
+    
+    Args:
+        img1 (np.ndarray): Primera imagen
+        img2 (np.ndarray): Segunda imagen  
+        matches (List[cv2.DMatch]): Matches entre keypoints
+        
+    Returns:
+        Dict[str, any]: Parámetros adaptativos recomendados
+    """
+    # Parámetros por defecto
+    params = {
+        'ransac_threshold': 5.0,
+        'blend_method': 'linear',
+        'confidence': 0.99,
+        'max_iters': 2000
+    }
+    
+    # Ajustar umbral RANSAC basado en el número de matches
+    num_matches = len(matches)
+    
+    if num_matches < 10:
+        # Pocos matches: ser más permisivo
+        params['ransac_threshold'] = 8.0
+        params['confidence'] = 0.95
+    elif num_matches < 50:
+        # Matches moderados: valores estándar
+        params['ransac_threshold'] = 5.0
+        params['confidence'] = 0.99
+    else:
+        # Muchos matches: ser más estricto
+        params['ransac_threshold'] = 3.0
+        params['confidence'] = 0.995
+        params['blend_method'] = 'multiband'  # Usar blending avanzado
+    
+    # Ajustar basado en resolución de imagen
+    h1, w1 = img1.shape[:2]
+    h2, w2 = img2.shape[:2]
+    avg_resolution = (h1 * w1 + h2 * w2) / 2
+    
+    if avg_resolution > 2000000:  # Imágenes de alta resolución
+        params['ransac_threshold'] *= 1.5
+        params['max_iters'] = 3000
+    elif avg_resolution < 500000:  # Imágenes de baja resolución
+        params['ransac_threshold'] *= 0.7
+        params['max_iters'] = 1000
+    
+    # Ajustar basado en calidad de matches (usando distancia promedio)
+    if matches:
+        avg_distance = np.mean([m.distance for m in matches])
+        if avg_distance > 0.3:  # Matches de baja calidad
+            params['ransac_threshold'] *= 1.2
+            params['confidence'] = max(0.90, params['confidence'] - 0.05)
+    
+    logger.info(f"Parámetros adaptativos: RANSAC={params['ransac_threshold']:.1f}, "
+                f"método={params['blend_method']}, matches={num_matches}")
+    
+    return params
 
 
 if __name__ == "__main__":

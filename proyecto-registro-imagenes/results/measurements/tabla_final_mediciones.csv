@@ -1,0 +1,8 @@
+objeto,dimension_cm,tipo
+Cuadro Virgen (altura),117.0,Calibración
+Cuadro Virgen (ancho),89.2,Requerida
+Mesa comedor (ancho),161.1,Calibración
+Mesa comedor (largo),165.0,Requerida
+Ventana (altura),98.5,Adicional
+Silla (altura),99.9,Adicional
+Planta (altura),60.8,Adicional
