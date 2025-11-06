@@ -3,7 +3,7 @@
 **Universidad Nacional de Colombia - Facultad de Minas**  
 **Visión por Computador - 3009228**  
 **Semestre 2025-02**  
-**Autores:** David Londoño, Andrés Churio, Sebastián Montoya  
+**Autores:** David Londoño, Andrés Churio, Sebastián Montoya Vargas
 **Fecha:** Octubre 27, 2025
 
 ---

@@ -1,1 +1,0 @@
-# Trabajo-2-Registro-de-Imagenes-y-Medicion-del-Mundo-Real

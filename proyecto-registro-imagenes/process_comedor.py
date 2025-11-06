@@ -32,7 +32,7 @@ from registration import estimate_homography, warp_image, register_images
 from utils import visualize_registration, save_results
 
 # Configuración
-IMAGES_DIR = Path("Comedor")
+IMAGES_DIR = Path("data/original")
 RESULTS_DIR = Path("results/comedor_registration")
 RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
