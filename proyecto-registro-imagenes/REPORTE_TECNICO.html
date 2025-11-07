@@ -21,6 +21,7 @@
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
             margin: 20px 0;
+            overflow-x: auto; /* Para contenido que se desborde horizontalmente */
         }
         
         h1 {
@@ -65,6 +66,37 @@
         
         li {
             margin-bottom: 8px;
+        }
+        
+        /* IMÁGENES RESPONSIVAS - ARREGLO PRINCIPAL */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        /* Contenedor para imágenes en línea */
+        p img {
+            margin: 10px auto;
+        }
+        
+        /* Figuras con caption */
+        figure {
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        figure img {
+            margin-bottom: 10px;
+        }
+        
+        figcaption {
+            font-style: italic;
+            color: #7f8c8d;
+            font-size: 0.9em;
         }
         
         code {
@@ -190,15 +222,56 @@
         @media (max-width: 768px) {
             body {
                 padding: 10px;
+                max-width: 100%;
             }
             .container {
                 padding: 20px;
+                margin: 10px 0;
             }
             h1 {
                 font-size: 1.8em;
             }
             h2 {
                 font-size: 1.4em;
+            }
+            /* Imágenes extra responsivas en móvil */
+            img {
+                max-width: 100% !important;
+                width: auto !important;
+                height: auto !important;
+            }
+            /* Tablas responsivas */
+            table {
+                font-size: 0.8em;
+                overflow-x: auto;
+                display: block;
+                white-space: nowrap;
+            }
+        }
+
+        /* Media query para pantallas muy pequeñas */
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+                margin: 5px 0;
+            }
+            h1 {
+                font-size: 1.5em;
+                text-align: center;
+            }
+            h2 {
+                font-size: 1.2em;
+            }
+            h3 {
+                font-size: 1.1em;
+            }
+            /* Figuras más compactas en móvil pequeño */
+            figure {
+                margin: 10px 0 !important;
+            }
+            figcaption {
+                font-size: 0.9em;
+                padding: 10px 5px;
             }
         }
     </style>

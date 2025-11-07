@@ -33,7 +33,7 @@ from utils import visualize_registration, save_results
 
 # Configuración
 IMAGES_DIR = Path("data/original")
-RESULTS_DIR = Path("results/comedor_registration")
+RESULTS_DIR = Path("results/figures")
 RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
 # Objetos de referencia para calibración (Parte 3)

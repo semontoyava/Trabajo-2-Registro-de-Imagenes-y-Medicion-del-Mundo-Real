@@ -27,8 +27,8 @@ from typing import List, Tuple, Dict, Optional
 import matplotlib.pyplot as plt
 
 # Configuración
-RESULTS_DIR = Path("results/comedor_registration")
-MEASUREMENTS_DIR = Path("results/measurements")
+RESULTS_DIR = Path("results/figures")
+MEASUREMENTS_DIR = Path("results/figures")
 MEASUREMENTS_DIR.mkdir(parents=True, exist_ok=True)
 
 # Objetos de referencia conocidos

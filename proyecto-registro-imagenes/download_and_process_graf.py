@@ -35,7 +35,7 @@ from utils import compute_registration_metrics, visualize_registration, save_res
 # Configuración
 DATASET_URL = "https://www.robots.ox.ac.uk/~vgg/research/affine/det_eval_files/graf.tar.gz"
 DATA_DIR = Path("data/graf_dataset")
-RESULTS_DIR = Path("results/graf_validation")
+RESULTS_DIR = Path("results/figures")
 
 
 def download_dataset(url: str, output_dir: Path) -> Path:
@@ -378,7 +378,7 @@ def main():
             save_visualization(
                 img_ref, img_i, result['registered_image'],
                 name_ref, name_i,
-                RESULTS_DIR / 'figures'
+                RESULTS_DIR
             )
             
             # Remover imagen del resultado para JSON (no serializable)
@@ -408,7 +408,7 @@ def main():
     print("PROCESO COMPLETADO")
     print(f"{'='*80}")
     print(f"\n✓ Métricas guardadas en: {metrics_path}")
-    print(f"✓ Visualizaciones en: {RESULTS_DIR / 'figures'}")
+    print(f"✓ Visualizaciones en: {RESULTS_DIR}")
     print(f"✓ Dataset en: {DATA_DIR}")
     
     return 0

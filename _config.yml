@@ -1,0 +1,32 @@
+theme: jekyll-theme-minimal
+title: "Registro de Imágenes y Medición del Mundo Real"
+description: "Proyecto de Visión por Computador - Universidad Nacional de Colombia"
+
+# GitHub Pages configuration
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  syntax_highlighter: rouge
+  
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Blog settings
+author: "David Londoño, Andrés Churio, Sebastián Montoya Vargas "
+email: "semontoyava@unal.edu.co"
+baseurl: "/Trabajo-2-Registro-de-Imagenes-y-Medicion-del-Mundo-Real"
+url: "https://semontoyava.github.io"
+
+# Navigation
+header_pages:
+  - proyecto-registro-imagenes/REPORTE_TECNICO.md
+
+# Exclude files from Jekyll build
+exclude:
+  - .venv/
+  - __pycache__/
+  - "*.pyc"
+  - .gitignore
+  - README.md
