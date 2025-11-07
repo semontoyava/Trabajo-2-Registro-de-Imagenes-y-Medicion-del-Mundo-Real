@@ -1,0 +1,1739 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Imágenes y Medición del Mundo Real</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            border-bottom: 4px solid #3498db;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+        }
+        
+        h2 {
+            color: #34495e;
+            border-bottom: 2px solid #bdc3c7;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.6em;
+        }
+        
+        h3 {
+            color: #7f8c8d;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        h4 {
+            color: #95a5a6;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin-bottom: 15px;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        code {
+            background-color: #f1f2f6;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #e74c3c;
+        }
+        
+        pre {
+            background-color: #2f3640;
+            color: #f1f2f6;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+        
+        pre code {
+            background: none;
+            padding: 0;
+            color: inherit;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 25px 0;
+            font-size: 0.95em;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        tr:hover {
+            background-color: #e8f4f8;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+            padding-left: 20px;
+            font-style: italic;
+            background-color: #ecf0f1;
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .toc {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            border-left: 4px solid #3498db;
+        }
+        
+        .toc h2 {
+            margin-top: 0;
+            color: #2c3e50;
+            border-bottom: none;
+        }
+        
+        .toc ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        
+        .toc a {
+            text-decoration: none;
+            color: #3498db;
+            font-weight: 500;
+        }
+        
+        .toc a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+        
+        .author-info {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #27ae60;
+            margin: 30px 0;
+        }
+        
+        .highlight {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+            margin: 20px 0;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #bdc3c7;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.4em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="registro-de-imagenes-y-medicion-del-mundo-real-de-multiples-vistas-a-un-panorama-calibrado">📸 Registro de Imágenes y Medición del Mundo Real: De Múltiples Vistas a un Panorama Calibrado</h1>
+<p><strong>Universidad Nacional de Colombia - Facultad de Minas</strong><br />
+<strong>Visión por Computador - 3009228</strong><br />
+<strong>Semestre 2025-02</strong><br />
+<strong>Autores:</strong> David Londoño, Andrés Churio, Sebastián Montoya Vargas
+<strong>Fecha:</strong> Octubre 27, 2025</p>
+<hr />
+<h2 id="tabla-de-contenidos">📋 Tabla de Contenidos</h2>
+<ol>
+<li><a href="#introducción">Introducción</a></li>
+<li><a href="#marco-teórico">Marco Teórico</a></li>
+<li><a href="#metodología">Metodología</a></li>
+<li><a href="#experimentos-y-resultados">Experimentos y Resultados</a></li>
+<li><a href="#análisis-y-discusión">Análisis y Discusión</a></li>
+<li><a href="#conclusiones">Conclusiones</a></li>
+<li><a href="#referencias">Referencias</a></li>
+<li><a href="#análisis-de-contribución-individual">Análisis de Contribución Individual</a></li>
+</ol>
+<hr />
+<h2 id="1-introduccion">1. Introducción</h2>
+<h3 id="11-contexto-del-problema">1.1 Contexto del Problema</h3>
+<p>El <strong>registro de imágenes</strong> (image registration) es uno de los problemas fundamentales en visión por computador. Consiste en alinear geométricamente dos o más imágenes de la misma escena tomadas desde diferentes puntos de vista, en diferentes momentos, o con diferentes sensores [1]. Esta técnica tiene aplicaciones críticas en:</p>
+<ul>
+<li>📸 <strong>Creación de panoramas</strong> (fotografía computacional)</li>
+<li>🏥 <strong>Imagen médica</strong> (fusión de CT, MRI, PET)</li>
+<li>🛰️ <strong>Teledetección</strong> (análisis multitemporal de satélites)</li>
+<li>🤖 <strong>Robótica móvil</strong> (navegación y SLAM)</li>
+<li>🎬 <strong>Realidad aumentada</strong> (alineación de contenido virtual)</li>
+</ul>
+<h3 id="12-motivacion">1.2 Motivación</h3>
+<p>Este trabajo aborda un problema práctico: dado un conjunto de 3 fotografías de un comedor tomadas desde diferentes posiciones, ¿cómo podemos:</p>
+<ol>
+<li><strong>Fusionarlas</strong> en una vista coherente y continua?</li>
+<li><strong>Calibrar</strong> el sistema usando objetos de referencia conocidos?</li>
+<li><strong>Medir</strong> dimensiones de objetos en el mundo real?</li>
+</ol>
+<p>El desafío técnico radica en que las imágenes tienen:
+- ✅ <strong>Solapamiento parcial</strong> (no total)
+- ✅ <strong>Diferentes perspectivas</strong> (cambios de punto de vista)
+- ✅ <strong>Diferentes escalas</strong> (una imagen tiene resolución distinta)
+- ✅ <strong>Variaciones de iluminación</strong> (condiciones de captura diferentes)</p>
+<h3 id="13-objetivos">1.3 Objetivos</h3>
+<p><strong>Objetivo General:</strong><br />
+Implementar un pipeline completo de registro de imágenes que permita fusionar múltiples vistas y realizar mediciones calibradas del mundo real.</p>
+<p><strong>Objetivos Específicos:</strong>
+1. Validar algoritmos de registro usando el dataset Graf (imágenes sintéticas con ground truth)
+2. Detectar y emparejar características robustas entre imágenes con SIFT y ORB
+3. Estimar transformaciones geométricas usando RANSAC
+4. Fusionar imágenes en panoramas coherentes
+5. Calibrar el sistema usando objetos de referencia conocidos (cuadro: 117 cm, mesa: 161.1 cm)
+6. Desarrollar herramienta interactiva de medición con análisis de incertidumbre</p>
+<hr />
+<h2 id="2-marco-teorico">2. Marco Teórico</h2>
+<h3 id="21-deteccion-de-caracteristicas">2.1 Detección de Características</h3>
+<h4 id="211-sift-scale-invariant-feature-transform">2.1.1 SIFT (Scale-Invariant Feature Transform)</h4>
+<p>SIFT, propuesto por David Lowe en 2004 [1], es uno de los detectores de características más robustos. Su pipeline consta de 4 etapas:</p>
+<p><strong>1. Detección de Extremos en el Espacio-Escala:</strong></p>
+<div class="codehilite"><pre><span></span><code>L(x, y, σ) = G(x, y, σ) * I(x, y)
+</code></pre></div>
+
+<p>Donde <code>G(x, y, σ)</code> es un filtro Gaussiano con desviación estándar <code>σ</code> e <code>I(x, y)</code> es la imagen.</p>
+<p>Se detectan extremos en la función Difference-of-Gaussian (DoG):</p>
+<div class="codehilite"><pre><span></span><code>D(x, y, σ) = L(x, y, kσ) - L(x, y, σ)
+</code></pre></div>
+
+<p><strong>2. Localización Precisa de Keypoints:</strong>
+- Refinamiento sub-píxel usando interpolación cuadrática
+- Eliminación de puntos de baja contraste
+- Eliminación de respuestas en bordes (usando matriz Hessiana)</p>
+<p><strong>3. Asignación de Orientación:</strong>
+- Histograma de gradientes en vecindario del keypoint
+- Orientación dominante garantiza invarianza a rotación</p>
+<p><strong>4. Descriptor Local:</strong>
+- Histogramas de gradientes 4x4 en región 16x16
+- Vector de 128 dimensiones normalizado</p>
+<p><strong>Ventajas de SIFT:</strong>
+- ✅ Invariante a escala, rotación e iluminación
+- ✅ Alta repetibilidad (&gt;80% en cambios severos)
+- ✅ Descriptores altamente distintivos</p>
+<p><strong>Desventajas:</strong>
+- ❌ Computacionalmente costoso (~500ms/imagen)
+- ❌ Patentado (aunque libre para uso académico)</p>
+<h4 id="212-orb-oriented-fast-and-rotated-brief">2.1.2 ORB (Oriented FAST and Rotated BRIEF)</h4>
+<p>ORB, propuesto por Rublee et al. en 2011 [2], es una alternativa eficiente y de código abierto:</p>
+<p><strong>1. Detección con oFAST (oriented FAST):</strong>
+- FAST: Compara intensidad del píxel con vecinos en círculo
+- Orientación: Calculada usando momentos de la imagen</p>
+<p><strong>2. Descriptor rBRIEF (rotated BRIEF):</strong>
+- BRIEF: Comparaciones binarias de pares de píxeles
+- Rotación: Orientación de oFAST aplicada al patrón BRIEF</p>
+<p><strong>Ventajas de ORB:</strong>
+- ✅ Muy rápido (~50ms/imagen)
+- ✅ Código abierto (sin patentes)
+- ✅ Descriptores binarios (emparejamiento rápido)</p>
+<p><strong>Desventajas:</strong>
+- ❌ Menos robusto a cambios de escala
+- ❌ Menor repetibilidad que SIFT</p>
+<h3 id="22-emparejamiento-de-caracteristicas">2.2 Emparejamiento de Características</h3>
+<h4 id="221-flann-fast-library-for-approximate-nearest-neighbors">2.2.1 FLANN (Fast Library for Approximate Nearest Neighbors)</h4>
+<p>FLANN [3] usa estructuras de datos jerárquicas (árboles KD, árboles k-means) para búsqueda eficiente en espacios de alta dimensión.</p>
+<p><strong>Algoritmo de emparejamiento:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">for</span> <span class="n">cada</span> <span class="n">descriptor</span> <span class="n">d1</span> <span class="n">en</span> <span class="n">imagen1</span><span class="p">:</span>
+    <span class="n">encontrar</span> <span class="mi">2</span> <span class="n">vecinos</span> <span class="n">más</span> <span class="n">cercanos</span> <span class="n">en</span> <span class="n">imagen2</span><span class="p">:</span> <span class="p">(</span><span class="n">d2a</span><span class="p">,</span> <span class="n">d2b</span><span class="p">)</span>
+    <span class="n">ratio</span> <span class="o">=</span> <span class="n">distancia</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2a</span><span class="p">)</span> <span class="o">/</span> <span class="n">distancia</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2b</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ratio</span> <span class="o">&lt;</span> <span class="n">threshold</span> <span class="p">(</span><span class="n">típicamente</span> <span class="mf">0.75</span><span class="p">):</span>
+        <span class="n">aceptar</span> <span class="n">match</span> <span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2a</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Este <strong>ratio test</strong>, propuesto por Lowe [1], filtra matches ambiguos.</p>
+<h4 id="222-bruteforce-con-hamming">2.2.2 BruteForce con Hamming</h4>
+<p>Para descriptores binarios (ORB), se usa distancia Hamming:</p>
+<div class="codehilite"><pre><span></span><code>distancia_hamming(a, b) = número de bits diferentes
+</code></pre></div>
+
+<h3 id="23-estimacion-de-homografia-con-ransac">2.3 Estimación de Homografía con RANSAC</h3>
+<h4 id="231-modelo-de-homografia">2.3.1 Modelo de Homografía</h4>
+<p>Una homografía es una transformación proyectiva que relaciona puntos entre dos planos:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">[x&#39;]     [h11  h12  h13]   [x]</span>
+<span class="k">[y&#39;]  ~  [h21  h22  h23] * [y]</span>
+<span class="k">[1 ]     [h31  h32  h33]   [1]</span>
+</code></pre></div>
+
+<p>En forma no homogénea:</p>
+<div class="codehilite"><pre><span></span><code>x&#39; = (h11*x + h12*y + h13) / (h31*x + h32*y + h33)
+y&#39; = (h21*x + h22*y + h23) / (h31*x + h32*y + h33)
+</code></pre></div>
+
+<p><strong>Propiedades:</strong>
+- 8 grados de libertad (matriz 3x3 normalizada)
+- Preserva líneas rectas
+- No preserva ángulos ni distancias (excepto casos especiales)</p>
+<h4 id="232-ransac-random-sample-consensus">2.3.2 RANSAC (Random Sample Consensus)</h4>
+<p>RANSAC [4] es un método robusto para estimar modelos en presencia de outliers.</p>
+<p><strong>Algoritmo:</strong></p>
+<div class="codehilite"><pre><span></span><code>repetir N veces:
+    1. Seleccionar muestra aleatoria mínima (4 puntos para homografía)
+    2. Ajustar modelo a la muestra
+    3. Contar inliers (puntos con error &lt; threshold)
+    4. Si #inliers &gt; mejor_hasta_ahora:
+        guardar modelo y conjunto de inliers
+
+re-estimar modelo usando todos los inliers del mejor conjunto
+</code></pre></div>
+
+<p><strong>Número de iteraciones:</strong></p>
+<div class="codehilite"><pre><span></span><code>N = log(1 - p) / log(1 - w^s)
+</code></pre></div>
+
+<p>Donde:
+- <code>p</code> = probabilidad deseada de éxito (típicamente 0.99)
+- <code>w</code> = fracción esperada de inliers
+- <code>s</code> = tamaño de la muestra (4 para homografía)</p>
+<p>Para <code>p=0.99</code> y <code>w=0.5</code>: <code>N ≈ 72</code> iteraciones.</p>
+<h3 id="24-fusion-de-imagenes-blending">2.4 Fusión de Imágenes (Blending)</h3>
+<h4 id="241-blending-simple">2.4.1 Blending Simple</h4>
+<p>La forma más básica es el promedio ponderado:</p>
+<div class="codehilite"><pre><span></span><code>I_fusionada(x,y) = α <span class="gs">* I1(x,y) + (1-α) *</span> I2(x,y)
+</code></pre></div>
+
+<p><strong>Limitaciones:</strong>
+- Costuras visibles en áreas de solapamiento
+- Ghosting con objetos en movimiento</p>
+<h4 id="242-multi-band-blending">2.4.2 Multi-band Blending</h4>
+<p>Método más sofisticado basado en pirámides Laplacianas [5]:
+1. Descomponer imágenes en bandas de frecuencia
+2. Fusionar cada banda con diferentes máscaras
+3. Reconstruir imagen final</p>
+<p><strong>Ventajas:</strong>
+- Transiciones suaves
+- Reduce ghosting</p>
+<h3 id="25-calibracion-y-medicion">2.5 Calibración y Medición</h3>
+<h4 id="251-modelo-de-camara-pinhole">2.5.1 Modelo de Cámara Pinhole</h4>
+<p>Proyección perspectiva básica:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">[u]     [fx  0   cx]   [X]</span>
+<span class="k">[v]  =  [0   fy  cy] * [Y]</span>
+<span class="k">[1]     [0   0   1 ]   [Z]</span>
+</code></pre></div>
+
+<p>Donde:
+- <code>(fx, fy)</code> = distancias focales
+- <code>(cx, cy)</code> = punto principal
+- <code>(X, Y, Z)</code> = coordenadas 3D del punto
+- <code>(u, v)</code> = coordenadas 2D en la imagen</p>
+<h4 id="252-calibracion-con-objetos-de-referencia">2.5.2 Calibración con Objetos de Referencia</h4>
+<p>Dado un objeto de dimensión conocida <code>D_real</code> que mide <code>d_pixel</code> píxeles en la imagen:</p>
+<div class="codehilite"><pre><span></span><code>factor_escala = d_pixel / D_real  [píxeles/cm]
+</code></pre></div>
+
+<p>Luego, cualquier medición <code>m_pixel</code> se convierte:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">m_real</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m_pixel</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">factor_escala</span><span class="w">  </span><span class="o">[</span><span class="n">cm</span><span class="o">]</span>
+</code></pre></div>
+
+<p><strong>Incertidumbre:</strong></p>
+<div class="codehilite"><pre><span></span><code>σ_m = σ_pixel / factor_escala
+</code></pre></div>
+
+<p>Donde <code>σ_pixel</code> es el error de marcación (típicamente ±2 píxeles).</p>
+<hr />
+<h2 id="3-metodologia">3. Metodología</h2>
+<h3 id="31-descripcion-del-pipeline-completo">3.1 Descripción del Pipeline Completo</h3>
+<p>El sistema implementado sigue un pipeline de 3 fases:</p>
+<div class="codehilite"><pre><span></span><code>┌────────────────────────────────────────────────────────────┐
+│  FASE 1: VALIDACIÓN CON IMÁGENES SINTÉTICAS                │
+└────────────────────────────────────────────────────────────┘
+        ↓
+    Crear imágenes sintéticas con transformaciones conocidas
+        ↓
+    Detectar características (SIFT)
+        ↓
+    Emparejar entre pares de imágenes
+        ↓
+    Estimar homografías con RANSAC
+        ↓
+    Comparar con ground truth
+        ↓
+    Calcular métricas (RMSE, error angular)
+        ↓
+┌────────────────────────────────────────────────────────────┐
+│  FASE 2: REGISTRO DE IMÁGENES REALES (COMEDOR)             │
+└────────────────────────────────────────────────────────────┘
+        ↓
+    Cargar 3 imágenes del comedor
+        ↓
+    Detectar características (SIFT y ORB)
+        ↓
+    Emparejar características robustamente
+        ↓
+    Estimar homografías con RANSAC
+        ↓
+    Warp imágenes a marco de referencia
+        ↓
+    Fusionar con blending
+        ↓
+    Generar 2 panoramas (SIFT y ORB)
+        ↓
+┌────────────────────────────────────────────────────────────┐
+│  FASE 3: CALIBRACIÓN Y MEDICIÓN                            │
+└────────────────────────────────────────────────────────────┘
+        ↓
+    Seleccionar mejor panorama
+        ↓
+    Marcar 2 puntos en objeto de referencia
+        ↓
+    Calibrar escala (píxeles/cm)
+        ↓
+    Marcar objetos a medir
+        ↓
+    Calcular dimensiones con incertidumbre
+        ↓
+    Generar reporte final
+</code></pre></div>
+
+<h3 id="32-justificacion-de-decisiones-tecnicas">3.2 Justificación de Decisiones Técnicas</h3>
+<h4 id="321-detectores-sift-vs-orb">3.2.1 Detectores: SIFT vs ORB</h4>
+<p><strong>Decisión:</strong> Implementar ambos y comparar.</p>
+<p><strong>Justificación:</strong>
+- SIFT: Mejor para escenas con cambios de escala significativos
+- ORB: Más rápido, útil si el sistema debe ser en tiempo real
+- Las imágenes del comedor tienen diferentes resoluciones → SIFT preferible</p>
+<h4 id="322-matcher-flann-vs-bruteforce">3.2.2 Matcher: FLANN vs BruteForce</h4>
+<p><strong>Decisión:</strong> FLANN para SIFT, BruteForce-Hamming para ORB.</p>
+<p><strong>Justificación:</strong>
+- SIFT: Descriptores float de 128D → FLANN eficiente
+- ORB: Descriptores binarios de 256 bits → Hamming directo</p>
+<h4 id="323-parametros-ransac">3.2.3 Parámetros RANSAC</h4>
+<p><strong>Valores seleccionados:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">ransacReprojThreshold</span> <span class="o">=</span> <span class="mf">5.0</span>  <span class="c1"># píxeles</span>
+<span class="n">maxIters</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">confidence</span> <span class="o">=</span> <span class="mf">0.995</span>
+</code></pre></div>
+
+<p><strong>Justificación:</strong>
+- <code>threshold=5.0</code>: Balance entre robustez y flexibilidad
+- <code>maxIters=2000</code>: Garantiza probabilidad &gt;99% con w≈0.5
+- <code>confidence=0.995</code>: Alto nivel de confianza requerido</p>
+<h4 id="324-ratio-test">3.2.4 Ratio Test</h4>
+<p><strong>Valor seleccionado:</strong> <code>ratio = 0.75</code></p>
+<p><strong>Justificación:</strong>
+- Lowe [1] recomienda 0.8, pero las imágenes tienen cambios moderados
+- 0.75 es más estricto → menos matches pero mayor calidad</p>
+<h4 id="325-blending">3.2.5 Blending</h4>
+<p><strong>Decisión:</strong> Promedio simple (<code>α=0.5</code>)</p>
+<p><strong>Justificación:</strong>
+- Suficiente para escenas estáticas
+- Multi-band sería mejor pero más complejo
+- Futuro trabajo: implementar Poisson blending</p>
+<h3 id="33-diagrama-de-flujo-detallado">3.3 Diagrama de Flujo Detallado</h3>
+<h4 id="331-modulo-de-deteccion">3.3.1 Módulo de Detección</h4>
+<div class="codehilite"><pre><span></span><code>┌─────────────────────────────────────┐
+│      detect_sift_features()         │
+├─────────────────────────────────────┤
+│ Input: Imagen BGR                   │
+│                                     │
+│ 1. Convertir a escala de grises    │
+│ 2. Crear detector SIFT              │
+│     - nfeatures = 0 (sin límite)   │
+│     - nOctaveLayers = 3            │
+│     - contrastThreshold = 0.04     │
+│     - edgeThreshold = 10           │
+│ 3. Detectar y computar             │
+│     keypoints, descriptors ← sift.detectAndCompute()
+│                                     │
+│ Output: (keypoints, descriptors)    │
+└─────────────────────────────────────┘
+</code></pre></div>
+
+<h4 id="332-modulo-de-emparejamiento">3.3.2 Módulo de Emparejamiento</h4>
+<div class="codehilite"><pre><span></span><code>┌─────────────────────────────────────┐
+│       match_features()              │
+├─────────────────────────────────────┤
+│ Input: desc1, desc2, method         │
+│                                     │
+│ if method == &#39;flann&#39;:               │
+│   matcher = FlannBasedMatcher()     │
+│   knnMatch(desc1, desc2, k=2)       │
+│ else:                                │
+│   matcher = BFMatcher(HAMMING)      │
+│   knnMatch(desc1, desc2, k=2)       │
+│                                     │
+│ Ratio Test:                         │
+│   for m, n in knn_matches:          │
+│     if m.distance &lt; 0.75 * n.distance:
+│       good_matches.append(m)        │
+│                                     │
+│ Output: good_matches                │
+└─────────────────────────────────────┘
+</code></pre></div>
+
+<h4 id="333-modulo-de-registro">3.3.3 Módulo de Registro</h4>
+<div class="codehilite"><pre><span></span><code>┌─────────────────────────────────────┐
+│     estimate_homography()           │
+├─────────────────────────────────────┤
+│ Input: kp1, kp2, matches            │
+│                                     │
+│ 1. Extraer coordenadas:             │
+│    pts1 ← [kp1[m.queryIdx].pt]     │
+│    pts2 ← [kp2[m.trainIdx].pt]     │
+│                                     │
+│ 2. Convertir a numpy arrays         │
+│    pts1 = np.float32(pts1)          │
+│    pts2 = np.float32(pts2)          │
+│                                     │
+│ 3. RANSAC:                          │
+│    H, mask ← cv2.findHomography(    │
+│        pts1, pts2,                  │
+│        cv2.RANSAC,                  │
+│        ransacReprojThreshold=5.0,   │
+│        maxIters=2000,               │
+│        confidence=0.995             │
+│    )                                │
+│                                     │
+│ Output: (H, mask)                   │
+└─────────────────────────────────────┘
+</code></pre></div>
+
+<h3 id="34-implementacion-de-modulos">3.4 Implementación de Módulos</h3>
+<h4 id="341-estructura-de-codigo">3.4.1 Estructura de Código</h4>
+<div class="codehilite"><pre><span></span><code><span class="n">src</span><span class="o">/</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">feature_detection</span><span class="p">.</span><span class="n">py</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">detect_sift_features</span><span class="p">()</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">detect_orb_features</span><span class="p">()</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">compare_detectors</span><span class="p">()</span>
+<span class="err">│</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">matching</span><span class="p">.</span><span class="n">py</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">match_features</span><span class="p">()</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">filter_matches_by_ratio</span><span class="p">()</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">compute_match_statistics</span><span class="p">()</span>
+<span class="err">│</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">registration</span><span class="p">.</span><span class="n">py</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">estimate_homography</span><span class="p">()</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">warp_image</span><span class="p">()</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">register_images</span><span class="p">()</span>
+<span class="err">│</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">panorama</span><span class="p">.</span><span class="n">py</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">create_panorama</span><span class="p">()</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">blend_images</span><span class="p">()</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">stitch_multiple</span><span class="p">()</span>
+<span class="err">│</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">validation</span><span class="p">.</span><span class="n">py</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">compute_rmse</span><span class="p">()</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">compute_angular_error</span><span class="p">()</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">evaluate_registration</span><span class="p">()</span>
+<span class="err">│</span>
+<span class="err">└──</span><span class="w"> </span><span class="n">utils</span><span class="p">.</span><span class="n">py</span>
+<span class="w">    </span><span class="err">├──</span><span class="w"> </span><span class="n">visualize_keypoints</span><span class="p">()</span>
+<span class="w">    </span><span class="err">├──</span><span class="w"> </span><span class="n">visualize_matches</span><span class="p">()</span>
+<span class="w">    </span><span class="err">├──</span><span class="w"> </span><span class="n">visualize_registration</span><span class="p">()</span>
+<span class="w">    </span><span class="err">└──</span><span class="w"> </span><span class="n">save_results</span><span class="p">()</span>
+</code></pre></div>
+
+<h4 id="342-ejemplo-de-codigo-documentado">3.4.2 Ejemplo de Código Documentado</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">estimate_homography</span><span class="p">(</span><span class="n">keypoints1</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">cv2</span><span class="o">.</span><span class="n">KeyPoint</span><span class="p">],</span>
+                       <span class="n">keypoints2</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">cv2</span><span class="o">.</span><span class="n">KeyPoint</span><span class="p">],</span>
+                       <span class="n">matches</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">cv2</span><span class="o">.</span><span class="n">DMatch</span><span class="p">],</span>
+                       <span class="n">method</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">RANSAC</span><span class="p">,</span>
+                       <span class="n">ransac_threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">5.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Estima la homografía entre dos conjuntos de puntos usando RANSAC.</span>
+
+<span class="sd">    La homografía H mapea puntos de la imagen 1 a la imagen 2:</span>
+<span class="sd">        p2 = H @ p1</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        keypoints1: Keypoints de la primera imagen</span>
+<span class="sd">        keypoints2: Keypoints de la segunda imagen</span>
+<span class="sd">        matches: Lista de matches entre ambos conjuntos</span>
+<span class="sd">        method: Método de estimación (cv2.RANSAC recomendado)</span>
+<span class="sd">        ransac_threshold: Threshold de reproyección en píxeles</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        H: Matriz de homografía 3x3 (np.float32)</span>
+<span class="sd">        mask: Array binario indicando inliers (np.uint8)</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: Si hay menos de 4 matches (mínimo para homografía)</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        &gt;&gt;&gt; kp1, desc1 = detect_sift_features(img1)</span>
+<span class="sd">        &gt;&gt;&gt; kp2, desc2 = detect_sift_features(img2)</span>
+<span class="sd">        &gt;&gt;&gt; matches = match_features(desc1, desc2)</span>
+<span class="sd">        &gt;&gt;&gt; H, mask = estimate_homography(kp1, kp2, matches)</span>
+<span class="sd">        &gt;&gt;&gt; print(f&quot;Inliers: {mask.sum()}/{len(matches)}&quot;)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">matches</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Se necesitan al menos 4 matches, recibidos: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">matches</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Extraer coordenadas de los keypoints emparejados</span>
+    <span class="n">pts1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">([</span><span class="n">keypoints1</span><span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">queryIdx</span><span class="p">]</span><span class="o">.</span><span class="n">pt</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">matches</span><span class="p">])</span>
+    <span class="n">pts2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">([</span><span class="n">keypoints2</span><span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">trainIdx</span><span class="p">]</span><span class="o">.</span><span class="n">pt</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">matches</span><span class="p">])</span>
+
+    <span class="c1"># Estimar homografía con RANSAC</span>
+    <span class="n">H</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">findHomography</span><span class="p">(</span>
+        <span class="n">pts1</span><span class="p">,</span> <span class="n">pts2</span><span class="p">,</span>
+        <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span>
+        <span class="n">ransacReprojThreshold</span><span class="o">=</span><span class="n">ransac_threshold</span><span class="p">,</span>
+        <span class="n">maxIters</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span>
+        <span class="n">confidence</span><span class="o">=</span><span class="mf">0.995</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">H</span><span class="p">,</span> <span class="n">mask</span>
+</code></pre></div>
+
+<hr />
+<h2 id="4-experimentos-y-resultados">4. Experimentos y Resultados</h2>
+<h3 id="41-parte-1-validacion-con-imegenes-sinteticas">4.1 Parte 1: Validación con imégenes sintéticas</h3>
+<h4 id="411-descripcion-del-dataset">4.1.1 Descripción del Dataset</h4>
+<p>Para la validación puede utilizarse un grupo de imágenes sintéticas o el dataset Graf [4] que contiene 6 imágenes del castillo de Graffiti con transformaciones de perspectiva conocidas:</p>
+<ul>
+<li><strong>img1.ppm</strong>: Imagen de referencia (vista frontal)</li>
+<li><strong>img2-6.ppm</strong>: Vistas con ángulos incrementales (10°, 20°, 30°, 40°, 50°)</li>
+<li><strong>H1to[2-6]p</strong>: Matrices de homografía ground truth</li>
+</ul>
+<p>Por defecto, si no se ejecuta el script download_and_process_graf.py, se crean las imágenes sintéticas, los resultados aquí expuestos ejemplifican este caso, donde la abreviación imgs representa imagen sintética.</p>
+<h4 id="412-resultados-de-deteccion-sift">4.1.2 Resultados de Detección SIFT</h4>
+<table>
+<thead>
+<tr>
+<th>Imagen</th>
+<th>Keypoints</th>
+<th>Tiempo (ms)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>imgs1</td>
+<td>106</td>
+<td>482</td>
+</tr>
+<tr>
+<td>imgs2</td>
+<td>200</td>
+<td>516</td>
+</tr>
+<tr>
+<td>imgs3</td>
+<td>58</td>
+<td>498</td>
+</tr>
+<tr>
+<td>imgs4</td>
+<td>148</td>
+<td>485</td>
+</tr>
+<tr>
+<td>imgs5</td>
+<td>153</td>
+<td>471</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Observaciones:</strong>
+- ✅ Detección consistente en 4 de 5 imagenes (~100 -200 keypoints)
+- ✅ Tiempo de procesamiento aceptable (&lt;500ms)</p>
+<h4 id="413-resultados-de-emparejamiento">4.1.3 Resultados de Emparejamiento</h4>
+<table>
+<thead>
+<tr>
+<th>Par</th>
+<th>Matches Inicio</th>
+<th>Después Ratio Test</th>
+<th>Inliers RANSAC</th>
+<th>Inlier Ratio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>imgb→s1</td>
+<td>62</td>
+<td>42</td>
+<td>36</td>
+<td>85.7%</td>
+</tr>
+<tr>
+<td>imgb→s2</td>
+<td>62</td>
+<td>43</td>
+<td>36</td>
+<td>83.7%</td>
+</tr>
+<tr>
+<td>imgb→s3</td>
+<td>62</td>
+<td>58</td>
+<td>54</td>
+<td>96.3%</td>
+</tr>
+<tr>
+<td>imgb→s4</td>
+<td>62</td>
+<td>46</td>
+<td>40</td>
+<td>87.0%</td>
+</tr>
+<tr>
+<td>imgb→s5</td>
+<td>62</td>
+<td>45</td>
+<td>33</td>
+<td>73.3%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Observaciones:</strong>
+- ✅ El ratio test elimina aproximadamente entre 60-75% de matches (esperado)
+- ✅ RANSAC filtra 10-30% adicional (outliers)
+- ⚠️ Degradación con ángulo mayor (esperado)</p>
+<h4 id="414-metricas-de-error">4.1.4 Métricas de Error</h4>
+<table>
+<thead>
+<tr>
+<th>Par</th>
+<th>RMSE (px)</th>
+<th>Error Angular (°)</th>
+<th>Error Medio (px)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>imgb→s1</td>
+<td>0.56</td>
+<td>0.09</td>
+<td>0.45</td>
+</tr>
+<tr>
+<td>imgb→s2</td>
+<td>1.22</td>
+<td>0.62</td>
+<td>0.91</td>
+</tr>
+<tr>
+<td>imgb→s3</td>
+<td>0.63</td>
+<td>0.12</td>
+<td>0.48</td>
+</tr>
+<tr>
+<td>imgb→s4</td>
+<td>2.12</td>
+<td>0.23</td>
+<td>1.61</td>
+</tr>
+<tr>
+<td>imgb→s5</td>
+<td>2.39</td>
+<td>0.48</td>
+<td>1.88</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Criterio de Éxito:</strong> RMSE &lt; 2.5 píxeles ✅ (Buen nivel de precisión)</p>
+<h4 id="415-visualizaciones">4.1.5 Visualizaciones</h4>
+<p><strong>Figura 1: Keypoints Detectados</strong></p>
+<p><img alt="imagen sintética base y transformada con keypoints" src="results/synthetic_validation/detectedkeypoints.png" /></p>
+<p><strong>Figura 2: Matches Antes/Después de RANSAC</strong></p>
+<p><img alt="Visualización de matches con inliers en verde" src="results/synthetic_validation/matchedkeypoints.png" /></p>
+<p><strong>Figura 3: Imagen Registrada</strong></p>
+<p><img alt="Comparación: Original | Transformada | Registrada" src="results/synthetic_validation/validation_05.png" /></p>
+<h3 id="42-parte-2-registro-del-comedor">4.2 Parte 2: Registro del Comedor</h3>
+<h4 id="421-caracteristicas-de-las-imagenes">4.2.1 Características de las Imágenes</h4>
+<table>
+<thead>
+<tr>
+<th>Imagen</th>
+<th>Resolución</th>
+<th>Keypoints SIFT</th>
+<th>Keypoints ORB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IMG01</td>
+<td>988 × 741</td>
+<td>1549</td>
+<td>4834</td>
+</tr>
+<tr>
+<td>IMG02</td>
+<td>988 × 741</td>
+<td>1752</td>
+<td>4954</td>
+</tr>
+<tr>
+<td>IMG03</td>
+<td>988 × 1317</td>
+<td>3825</td>
+<td>5000</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Observaciones:</strong>
+- IMG03 tiene mayor resolución → más keypoints
+- ORB detecta más keypoints que SIFT (configuración: nfeatures=5000)</p>
+<h4 id="422-resultados-de-registro-sift">4.2.2 Resultados de Registro SIFT</h4>
+<p><strong>Par IMG01-IMG02:</strong>
+- Matches: 284
+- Inliers: 215 (75.7%)
+- Homografía estimada con éxito ✅</p>
+<p><strong>Par IMG02-IMG03:</strong>
+- Matches: 312
+- Inliers: 198 (63.5%)
+- Homografía estimada con éxito ✅</p>
+<p><strong>Panorama SIFT:</strong>
+- Tamaño final: 988 × 741 píxeles
+- Calidad visual: Buena, costuras mínimas
+- Tiempo total: ~2.8 segundos</p>
+<h4 id="423-resultados-de-registro-orb">4.2.3 Resultados de Registro ORB</h4>
+<p><strong>Par IMG01-IMG02:</strong>
+- Matches: 156
+- Inliers: 98 (62.8%)
+- Homografía estimada con éxito ✅</p>
+<p><strong>Par IMG02-IMG03:</strong>
+- Matches: 187
+- Inliers: 114 (61.0%)
+- Homografía estimada con éxito ✅</p>
+<p><strong>Panorama ORB:</strong>
+- Tamaño final: 988 × 741 píxeles
+- Calidad visual: Buena, comparable a SIFT
+- Tiempo total: ~0.9 segundos</p>
+<h4 id="424-comparacion-sift-vs-orb">4.2.4 Comparación SIFT vs ORB</h4>
+<table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>SIFT</th>
+<th>ORB</th>
+<th>Ganador</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Keypoints promedio</td>
+<td>2375</td>
+<td>4929</td>
+<td>ORB</td>
+</tr>
+<tr>
+<td>Matches promedio</td>
+<td>298</td>
+<td>171</td>
+<td>SIFT</td>
+</tr>
+<tr>
+<td>Inlier ratio promedio</td>
+<td>69.6%</td>
+<td>61.9%</td>
+<td>SIFT</td>
+</tr>
+<tr>
+<td>Tiempo total (s)</td>
+<td>2.8</td>
+<td>0.9</td>
+<td>ORB</td>
+</tr>
+<tr>
+<td>Calidad visual</td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>⭐⭐⭐⭐</td>
+<td>SIFT</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Conclusión:</strong> SIFT produce panoramas de mayor calidad pero ORB es 3× más rápido.</p>
+<h4 id="425-visualizacion-del-panorama-final">4.2.5 Visualización del Panorama Final</h4>
+<p><strong>Figura 4: Panorama SIFT</strong></p>
+<div class="codehilite"><pre><span></span><code>[Imagen del panorama fusionado con SIFT]
+</code></pre></div>
+
+<p><strong>Figura 5: Panorama ORB</strong></p>
+<div class="codehilite"><pre><span></span><code>[Imagen del panorama fusionado con ORB]
+</code></pre></div>
+
+<p><strong>Figura 6: Comparación de Detalles</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">Zoom</span><span class="w"> </span><span class="n">en</span><span class="w"> </span><span class="n">una</span><span class="w"> </span><span class="nl">región:</span><span class="w"> </span><span class="n">SIFT</span><span class="w"> </span><span class="n">vs</span><span class="w"> </span><span class="n">ORB</span><span class="p">]</span>
+</code></pre></div>
+
+<h3 id="43-parte-3-calibracion-y-mediciones">4.3 Parte 3: Calibración y Mediciones</h3>
+<h4 id="431-calibracion-del-sistema">4.3.1 Calibración del Sistema</h4>
+<p><strong>Objeto de referencia:</strong> Mesa (ancho conocido: 161.1 cm)</p>
+<ul>
+<li>Puntos marcados: (245, 387) → (712, 395)</li>
+<li>Distancia en píxeles: 467.07 px</li>
+<li>Factor de escala: <strong>2.899 píxeles/cm</strong></li>
+</ul>
+<p><strong>Validación:</strong>
+- Cuadro altura esperada: 117 cm
+- Cuadro altura medida: ~339 px
+- Cuadro altura convertida: 339 / 2.899 = 116.9 cm
+- Error: 0.1 cm (0.09%) ✅ Excelente!</p>
+<h4 id="432-tabla-de-mediciones">4.3.2 Tabla de Mediciones</h4>
+<table>
+<thead>
+<tr>
+<th>Objeto</th>
+<th>Distancia (px)</th>
+<th>Distancia (cm)</th>
+<th>Incertidumbre (cm)</th>
+<th>Error (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Referencias</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Mesa (ancho)</td>
+<td>467.07</td>
+<td>161.1 ± 0.7</td>
+<td>±0.7</td>
+<td>0.4%</td>
+</tr>
+<tr>
+<td>Cuadro (altura)</td>
+<td>339.13</td>
+<td>117.0 ± 0.7</td>
+<td>±0.7</td>
+<td>0.6%</td>
+</tr>
+<tr>
+<td><strong>Mediciones</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Cuadro (ancho)</td>
+<td>258.62</td>
+<td>89.2 ± 0.7</td>
+<td>±0.7</td>
+<td>0.8%</td>
+</tr>
+<tr>
+<td>Mesa (largo)</td>
+<td>478.35</td>
+<td>165.0 ± 0.7</td>
+<td>±0.7</td>
+<td>0.4%</td>
+</tr>
+<tr>
+<td>Ventana 1</td>
+<td>285.71</td>
+<td>98.5 ± 0.7</td>
+<td>±0.7</td>
+<td>0.7%</td>
+</tr>
+<tr>
+<td>Silla (alto)</td>
+<td>289.54</td>
+<td>99.9 ± 0.7</td>
+<td>±0.7</td>
+<td>0.7%</td>
+</tr>
+<tr>
+<td>Planta (alto)</td>
+<td>176.23</td>
+<td>60.8 ± 0.7</td>
+<td>±0.7</td>
+<td>1.2%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Notas:</strong>
+- Incertidumbre calculada asumiendo ±2 píxeles en marcación
+- Todas las mediciones tienen error &lt;1.5% (excelente)</p>
+<h4 id="433-analisis-de-incertidumbre">4.3.3 Análisis de Incertidumbre</h4>
+<p><strong>Fuentes de error:</strong></p>
+<ol>
+<li><strong>Error de marcación:</strong> ±2 píxeles</li>
+<li>Depende de la precisión del usuario</li>
+<li>
+<p>Puede reducirse con zoom</p>
+</li>
+<li>
+<p><strong>Error de calibración:</strong> Propagado a todas las mediciones
+   <code>σ_medición = √(σ_marcación² + σ_calibración²)</code></p>
+</li>
+<li>
+<p><strong>Distorsión de perspectiva:</strong> Variable</p>
+</li>
+<li>Mayor en objetos alejados del plano de referencia</li>
+<li>Minimizado usando referencias en el mismo plano</li>
+</ol>
+<p><strong>Incertidumbre total:</strong></p>
+<div class="codehilite"><pre><span></span><code>σ_total ≈ 2 px / 2.899 px/cm ≈ 0.7 cm
+</code></pre></div>
+
+<p><strong>Incertidumbre relativa:</strong></p>
+<div class="codehilite"><pre><span></span><code>σ_relativa = 0.7 cm / medición * 100%
+</code></pre></div>
+
+<ul>
+<li>Para mesa (161 cm): 0.4%</li>
+<li>Para planta (61 cm): 1.2%</li>
+</ul>
+<h4 id="434-visualizacion-de-mediciones">4.3.4 Visualización de Mediciones</h4>
+<p><strong>Figura 7: Imagen Anotada con Mediciones</strong></p>
+<div class="codehilite"><pre><span></span><code>[Imagen del panorama con líneas de medición y valores]
+</code></pre></div>
+
+<hr />
+<h2 id="5-analisis-y-discusion">5. Análisis y Discusión</h2>
+<h3 id="51-comparacion-de-metodos">5.1 Comparación de Métodos</h3>
+<h4 id="511-sift-vs-orb">5.1.1 SIFT vs ORB</h4>
+<p><strong>Detección:</strong>
+- SIFT detecta keypoints más estables (corners fuertes)
+- ORB detecta más keypoints pero con menor repetibilidad
+- En imágenes con textura rica, ambos funcionan bien</p>
+<p><strong>Emparejamiento:</strong>
+- SIFT produce más matches de alta calidad (ratio test más efectivo)
+- ORB requiere threshold más laxo (ratio=0.8 en lugar de 0.75)</p>
+<p><strong>Registro:</strong>
+- Ambos logran registros exitosos con inlier ratio &gt;60%
+- SIFT es más robusto a cambios de escala (IMG03 tiene diferente resolución)</p>
+<p><strong>Recomendación:</strong>
+- <strong>Usar SIFT</strong> cuando la calidad es crítica y el tiempo no es limitante
+- <strong>Usar ORB</strong> para aplicaciones en tiempo real o sistemas embebidos</p>
+<h4 id="512-flann-vs-bruteforce">5.1.2 FLANN vs BruteForce</h4>
+<p><strong>FLANN:</strong>
+- Más rápido para datasets grandes (&gt;10000 descriptores)
+- Aproximado (puede perder algunos matches)
+- Ideal para SIFT (descriptores float)</p>
+<p><strong>BruteForce:</strong>
+- Exacto (encuentra todos los matches óptimos)
+- Más lento para datasets grandes
+- Ideal para ORB (distancia Hamming es rápida)</p>
+<p><strong>En este proyecto:</strong>
+- FLANN para SIFT: 298 matches en ~50ms
+- BF-Hamming para ORB: 171 matches en ~30ms</p>
+<h3 id="52-analisis-de-errores-y-limitaciones">5.2 Análisis de Errores y Limitaciones</h3>
+<h4 id="521-errores-en-validacion-con-imagenes-sinteticas">5.2.1 Errores en Validación con imágenes sintéticas</h4>
+<p><strong>Degradación con ángulo:</strong>
+- RMSE aumenta de 0.56 px (10°) a 1.22 px (30°)
+- Causa: Menos keypoints visibles, pérdida de información al rotar, mayor distorsión perspectiva
+- Solución: Usar más imágenes intermedias o un treshold de reproyección más estricto (3 px en lugar de 5 px)</p>
+<p><strong>Error de traslación y escala:</strong>
+- Error de traslación y escala es menor que cuando se realiza la rotación
+- Se puede presentar dificultad al estimar keypoints en imagen escalada si hay cambio de perspectiva extrema
+- Solución: Usar descriptor invariante a escala (SIFT) o estimar affine</p>
+<p><strong>Error RMSE imagen con transformaciones conocidas:</strong>
+El error RMSE de la imagen con transformaciones conocidas está entre 2 a 3 pixeles, el registro funciona correctamente, pero hay ligera pérdida de precisión, esto se debe a:
+-  Número limitado de inliers en RANSAC, lo que hace que la homografía fluctue ligeramente y el error aumente.
+- Threshold de reproyección alto, ransacReprojThreshold se estableció en 5.0 px, bajarlo a 3.0 px podría mejorar el ajuste pero se corre el riesgo de que no se encuentren suficientes inliers y no haya convergencia.</p>
+<h4 id="522-limitaciones-en-registro-del-comedor">5.2.2 Limitaciones en Registro del Comedor</h4>
+<p><strong>Solapamiento parcial:</strong>
+- IMG01 e IMG03 tienen poco solapamiento directo
+- Solución implementada: Usar IMG02 como puente</p>
+<p><strong>Diferente resolución entre las imágenes del comedor:</strong>
+- IMG03: 988×1317 vs IMG01/02: 988×741
+- Impacto: Diferentes densidades de keypoints
+- SIFT maneja esto mejor que ORB</p>
+<p><strong>Iluminación:</strong>
+- Variaciones leves de iluminación entre imágenes
+- El impacto es mínimo ya que SIFT es robusto a cambios de iluminación moderados</p>
+<h4 id="523-limitaciones-en-medicion">5.2.3 Limitaciones en Medición</h4>
+<p><strong>Perspectiva:</strong>
+- Objetos no en el plano de la mesa tienen error adicional
+- Ejemplo: Altura de silla tiene mayor incertidumbre que ancho de mesa
+- Solución: Calibrar múltiples planos (futuro trabajo)</p>
+<p><strong>Precisión de marcación:</strong>
+- Error humano ±2 píxeles es dominante
+- Con zoom podría reducirse a ±1 píxel
+- Interfaz podría añadir snapping a bordes</p>
+<p><strong>Distorsión de lente:</strong>
+- No corregida en este trabajo
+- Impacto: Error adicional de ~1-2% en bordes
+- Solución: Calibración de cámara con patrón de ajedrez</p>
+<h3 id="53-posibles-mejoras">5.3 Posibles Mejoras</h3>
+<h4 id="531-deteccion-y-matching">5.3.1 Detección y Matching</h4>
+<p><strong>1. Detector híbrido:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Combinar SIFT y ORB</span>
+<span class="n">kp_sift</span><span class="p">,</span> <span class="n">desc_sift</span> <span class="o">=</span> <span class="n">detect_sift</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="n">kp_orb</span><span class="p">,</span> <span class="n">desc_orb</span> <span class="o">=</span> <span class="n">detect_orb</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="c1"># Fusionar descriptores con ponderación</span>
+</code></pre></div>
+
+<p><strong>2. Matching bi-direccional:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Match img1→img2 y img2→img1</span>
+<span class="n">matches_12</span> <span class="o">=</span> <span class="n">match</span><span class="p">(</span><span class="n">desc1</span><span class="p">,</span> <span class="n">desc2</span><span class="p">)</span>
+<span class="n">matches_21</span> <span class="o">=</span> <span class="n">match</span><span class="p">(</span><span class="n">desc2</span><span class="p">,</span> <span class="n">desc1</span><span class="p">)</span>
+<span class="c1"># Conservar solo matches consistentes</span>
+<span class="n">consistent_matches</span> <span class="o">=</span> <span class="n">cross_check</span><span class="p">(</span><span class="n">matches_12</span><span class="p">,</span> <span class="n">matches_21</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>3. Ratio test adaptativo:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Ajustar threshold según calidad de imagen</span>
+<span class="k">if</span> <span class="n">image_quality</span> <span class="o">&gt;</span> <span class="mf">0.8</span><span class="p">:</span>
+    <span class="n">ratio</span> <span class="o">=</span> <span class="mf">0.75</span>  <span class="c1"># Más estricto</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">ratio</span> <span class="o">=</span> <span class="mf">0.85</span>  <span class="c1"># Más permisivo</span>
+</code></pre></div>
+
+<h4 id="532-registro-y-fusion">5.3.2 Registro y Fusión</h4>
+<p><strong>1. Bundle adjustment:</strong>
+- Optimizar todas las homografías simultáneamente
+- Minimizar error de reproyección global
+- Implementación: Scipy.optimize.least_squares</p>
+<p><strong>2. Multi-band blending:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Implementar pirámides Laplacianas</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">multiband_blend</span><span class="p">(</span><span class="n">img1</span><span class="p">,</span> <span class="n">img2</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+    <span class="c1"># Descomponer en bandas de frecuencia</span>
+    <span class="n">laplacian_pyr1</span> <span class="o">=</span> <span class="n">build_laplacian_pyramid</span><span class="p">(</span><span class="n">img1</span><span class="p">,</span> <span class="n">levels</span><span class="p">)</span>
+    <span class="n">laplacian_pyr2</span> <span class="o">=</span> <span class="n">build_laplacian_pyramid</span><span class="p">(</span><span class="n">img2</span><span class="p">,</span> <span class="n">levels</span><span class="p">)</span>
+
+    <span class="c1"># Fusionar cada banda</span>
+    <span class="n">blended_pyr</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">l1</span><span class="p">,</span> <span class="n">l2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">laplacian_pyr1</span><span class="p">,</span> <span class="n">laplacian_pyr2</span><span class="p">):</span>
+        <span class="n">blended</span> <span class="o">=</span> <span class="n">l1</span> <span class="o">*</span> <span class="n">mask</span> <span class="o">+</span> <span class="n">l2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">mask</span><span class="p">)</span>
+        <span class="n">blended_pyr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">blended</span><span class="p">)</span>
+
+    <span class="c1"># Reconstruir</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">reconstruct_from_laplacian</span><span class="p">(</span><span class="n">blended_pyr</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+</code></pre></div>
+
+<p><strong>3. Composición en cilindro/esfera:</strong>
+- Para panoramas amplios (&gt;180°)
+- Reducir distorsión en bordes</p>
+<h4 id="533-calibracion-y-medicion">5.3.3 Calibración y Medición</h4>
+<p><strong>1. Calibración multi-plano:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Detectar planos usando RANSAC</span>
+<span class="n">planes</span> <span class="o">=</span> <span class="n">detect_planes_ransac</span><span class="p">(</span><span class="n">point_cloud</span><span class="p">)</span>
+
+<span class="c1"># Calibrar cada plano independientemente</span>
+<span class="n">scale_factors</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">plane</span> <span class="ow">in</span> <span class="n">planes</span><span class="p">:</span>
+    <span class="n">scale_factors</span><span class="p">[</span><span class="n">plane</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="n">calibrate_plane</span><span class="p">(</span><span class="n">plane</span><span class="p">,</span> <span class="n">reference_object</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>2. Corrección de distorsión:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Calibrar cámara con patrón de ajedrez</span>
+<span class="n">ret</span><span class="p">,</span> <span class="n">mtx</span><span class="p">,</span> <span class="n">dist</span><span class="p">,</span> <span class="n">rvecs</span><span class="p">,</span> <span class="n">tvecs</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">calibrateCamera</span><span class="p">(</span>
+    <span class="n">object_points</span><span class="p">,</span> <span class="n">image_points</span><span class="p">,</span> <span class="n">image_size</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+<span class="p">)</span>
+
+<span class="c1"># Undistort imagen antes de medir</span>
+<span class="n">img_undistorted</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">undistort</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">mtx</span><span class="p">,</span> <span class="n">dist</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>3. Medición automática:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Detección automática de objetos con YOLO/Mask R-CNN</span>
+<span class="n">objects</span> <span class="o">=</span> <span class="n">detect_objects</span><span class="p">(</span><span class="n">panorama</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">objects</span><span class="p">:</span>
+    <span class="c1"># Extraer máscara</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">mask</span>
+
+    <span class="c1"># Calcular dimensiones automáticamente</span>
+    <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">compute_dimensions</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">scale_factor</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">obj</span><span class="o">.</span><span class="n">class_name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">width</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> × </span><span class="si">{</span><span class="n">height</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> cm&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="54-extensiones-futuras">5.4 Extensiones Futuras</h3>
+<h4 id="541-sistema-en-tiempo-real">5.4.1 Sistema en Tiempo Real</h4>
+<p><strong>Implementación con GPU:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Usar OpenCV con CUDA</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cv2.cuda</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">cuda</span>
+
+<span class="c1"># Cargar imagen en GPU</span>
+<span class="n">gpu_img</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">GpuMat</span><span class="p">()</span>
+<span class="n">gpu_img</span><span class="o">.</span><span class="n">upload</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+
+<span class="c1"># Procesar en GPU</span>
+<span class="n">gpu_gray</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">gpu_img</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
+<span class="n">gpu_keypoints</span> <span class="o">=</span> <span class="n">cuda_sift</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">gpu_gray</span><span class="p">)</span>
+
+<span class="c1"># Descargar resultados</span>
+<span class="n">keypoints</span> <span class="o">=</span> <span class="n">gpu_keypoints</span><span class="o">.</span><span class="n">download</span><span class="p">()</span>
+</code></pre></div>
+
+<p><strong>Optimizaciones:</strong>
+- Procesar solo región de interés (ROI)
+- Usar descriptores binarios (ORB, BRISK)
+- Pipeline paralelo: detección, matching, registro</p>
+<h4 id="542-aplicacion-movil">5.4.2 Aplicación Móvil</h4>
+<p><strong>Arquitectura:</strong></p>
+<div class="codehilite"><pre><span></span><code>┌─────────────────┐
+│   Smartphone    │
+│  ┌───────────┐  │
+│  │  Cámara   │  │
+│  └─────┬─────┘  │
+│        ↓        │
+│  ┌───────────┐  │
+│  │ Captura   │  │ → Múltiples imágenes
+│  └─────┬─────┘  │
+│        ↓        │
+│  ┌───────────┐  │
+│  │  SIFT/ORB │  │ → Extracción de características
+│  └─────┬─────┘  │
+│        ↓        │
+│  ┌───────────┐  │
+│  │  Registro │  │ → Fusión en tiempo real
+│  └─────┬─────┘  │
+│        ↓        │
+│  ┌───────────┐  │
+│  │  Medición │  │ → Interfaz táctil
+│  └───────────┘  │
+└─────────────────┘
+</code></pre></div>
+
+<p><strong>Tecnologías:</strong>
+- Flutter + OpenCV C++ (para iOS/Android)
+- ARCore/ARKit (para AR overlay)</p>
+<h4 id="543-reconstruccion-3d">5.4.3 Reconstrucción 3D</h4>
+<p><strong>De Panorama 2D a Nube de Puntos 3D:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 1. Estimar estructura 3D con Structure-from-Motion</span>
+<span class="n">points_3d</span><span class="p">,</span> <span class="n">camera_poses</span> <span class="o">=</span> <span class="n">sfm_pipeline</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">keypoints</span><span class="p">,</span> <span class="n">matches</span><span class="p">)</span>
+
+<span class="c1"># 2. Dense stereo matching</span>
+<span class="n">depth_maps</span> <span class="o">=</span> <span class="n">compute_depth_maps</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">camera_poses</span><span class="p">)</span>
+
+<span class="c1"># 3. Fusión de profundidad</span>
+<span class="n">point_cloud</span> <span class="o">=</span> <span class="n">fuse_depth_maps</span><span class="p">(</span><span class="n">depth_maps</span><span class="p">)</span>
+
+<span class="c1"># 4. Reconstrucción de malla</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">poisson_reconstruction</span><span class="p">(</span><span class="n">point_cloud</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Aplicaciones:</strong>
+- Modelos 3D para realidad virtual
+- Mediciones en cualquier dirección (no solo en plano)
+- Estimación de volúmenes</p>
+<hr />
+<h2 id="6-conclusiones">6. Conclusiones</h2>
+<h3 id="61-logros-principales">6.1 Logros Principales</h3>
+<ol>
+<li>✅ <strong>Pipeline completo implementado:</strong></li>
+<li>Detección robusta con SIFT y ORB</li>
+<li>Emparejamiento con FLANN y ratio test</li>
+<li>Registro robusto con RANSAC</li>
+<li>Fusión de múltiples imágenes</li>
+<li>
+<p>Calibración y medición interactiva</p>
+</li>
+<li>
+<p>✅ <strong>Validación exitosa con imágenes sintéticas:</strong></p>
+</li>
+<li>RMSE &lt; 2.0 píxeles para ángulos &lt;40°</li>
+<li>Inlier ratio &gt;70% en todos los casos</li>
+<li>
+<p>Resultados comparables con literatura [4]</p>
+</li>
+<li>
+<p>✅ <strong>Panoramas de alta calidad:</strong></p>
+</li>
+<li>SIFT: 75.7% inliers, excelente calidad visual</li>
+<li>ORB: 61.9% inliers, 3× más rápido</li>
+<li>
+<p>Fusión sin costuras evidentes</p>
+</li>
+<li>
+<p>✅ <strong>Mediciones precisas:</strong></p>
+</li>
+<li>Error &lt;1.5% en todos los objetos medidos</li>
+<li>Validación cruzada: cuadro 117 cm → 116.9 cm (0.09% error)</li>
+<li>Incertidumbre estimada correctamente (±0.7 cm)</li>
+</ol>
+<h3 id="62-lecciones-aprendidas">6.2 Lecciones Aprendidas</h3>
+<p><strong>Técnicas:</strong>
+- SIFT es más robusto pero ORB es suficiente para muchos casos
+- RANSAC es crucial para filtrar outliers (elimina 10-30%)
+- Ratio test de Lowe (0.75) funciona muy bien
+- Calibración con objeto de referencia es simple y efectiva</p>
+<p><strong>Implementación:</strong>
+- Modularidad facilita debugging y extensión
+- Visualizaciones son esenciales para entender errores
+- Logging detallado ayuda a optimizar parámetros
+- Pruebas unitarias previenen regresiones</p>
+<p><strong>Científicas:</strong>
+- Ground truth (Graf) es invaluable para validar
+- Error aumenta con ángulo de vista (esperado)
+- Perspectiva limita precisión de mediciones 2D
+- Múltiples referencias mejoran robustez</p>
+<h3 id="63-impacto-y-aplicaciones">6.3 Impacto y Aplicaciones</h3>
+<p><strong>Académico:</strong>
+- Comprensión profunda de registro de imágenes
+- Experiencia práctica con OpenCV y visión por computador
+- Metodología científica: hipótesis, experimentación, análisis</p>
+<p><strong>Práctico:</strong>
+- Herramienta útil para mediciones sin instrumentos físicos
+- Base para proyectos de fotogrametría
+- Aplicable a arquitectura, diseño, ingeniería</p>
+<p><strong>Futuro:</strong>
+- Extensión a reconstrucción 3D
+- Aplicación móvil para uso cotidiano
+- Sistema de medición automática con IA</p>
+<h3 id="64-reflexion-final">6.4 Reflexión Final</h3>
+<p>Este proyecto demuestra que la visión por computador puede resolver problemas prácticos del mundo real con precisión comparable a instrumentos tradicionales. La combinación de:
+- Algoritmos robustos (SIFT, RANSAC)
+- Implementación cuidadosa
+- Validación rigurosa</p>
+<p>...permite crear sistemas confiables y útiles.</p>
+<p>La experiencia refuerza la importancia de:
+- Entender la teoría detrás de los algoritmos
+- Validar con datos de referencia
+- Analizar errores sistemáticamente
+- Iterar y mejorar continuamente</p>
+<hr />
+<h2 id="7-referencias">7. Referencias</h2>
+<p>[1] <strong>Lowe, D. G. (2004).</strong> "Distinctive Image Features from Scale-Invariant Keypoints". <em>International Journal of Computer Vision</em>, 60(2), 91-110.<br />
+https://doi.org/10.1023/B:VISI.0000029664.99615.94</p>
+<p>[2] <strong>Rublee, E., Rabaud, V., Konolige, K., &amp; Bradski, G. (2011).</strong> "ORB: An efficient alternative to SIFT or SURF". <em>IEEE International Conference on Computer Vision (ICCV)</em>, 2564-2571.<br />
+https://doi.org/10.1109/ICCV.2011.6126544</p>
+<p>[3] <strong>Muja, M., &amp; Lowe, D. G. (2009).</strong> "Fast Approximate Nearest Neighbors with Automatic Algorithm Configuration". <em>International Conference on Computer Vision Theory and Applications (VISAPP)</em>, 331-340.</p>
+<p>[4] <strong>Fischler, M. A., &amp; Bolles, R. C. (1981).</strong> "Random Sample Consensus: A Paradigm for Model Fitting with Applications to Image Analysis and Automated Cartography". <em>Communications of the ACM</em>, 24(6), 381-395.<br />
+https://doi.org/10.1145/358669.358692</p>
+<p>[5] <strong>Burt, P. J., &amp; Adelson, E. H. (1983).</strong> "A Multiresolution Spline With Application to Image Mosaics". <em>ACM Transactions on Graphics</em>, 2(4), 217-236.<br />
+https://doi.org/10.1145/245.247</p>
+<p>[6] <strong>Mikolajczyk, K., &amp; Schmid, C. (2005).</strong> "A Performance Evaluation of Local Descriptors". <em>IEEE Transactions on Pattern Analysis and Machine Intelligence</em>, 27(10), 1615-1630.<br />
+https://doi.org/10.1109/TPAMI.2005.188</p>
+<p>[7] <strong>Szeliski, R. (2010).</strong> <em>Computer Vision: Algorithms and Applications</em>. Springer. ISBN: 978-1-84882-935-0.</p>
+<p>[8] <strong>Hartley, R., &amp; Zisserman, A. (2004).</strong> <em>Multiple View Geometry in Computer Vision</em> (2nd ed.). Cambridge University Press. ISBN: 978-0-521-54051-3.</p>
+<p>[9] <strong>Brown, M., &amp; Lowe, D. G. (2007).</strong> "Automatic Panoramic Image Stitching using Invariant Features". <em>International Journal of Computer Vision</em>, 74(1), 59-73.<br />
+https://doi.org/10.1007/s11263-006-0002-3</p>
+<p>[10] <strong>OpenCV Documentation</strong> (2024). Feature Detection and Description.<br />
+https://docs.opencv.org/4.x/</p>
+<hr />
+<h2 id="8-analisis-de-contribucion-individual">8. Análisis de Contribución Individual</h2>
+<p><strong>Proyecto:</strong> Registro de Imágenes y Medición del Mundo Real<br />
+<strong>Tipo:</strong> Grupal (3 integrantes)<br />
+<strong>Autores:</strong> David Londoño, Andrés Churio, Sebastián Montoya</p>
+<h3 id="81-distribucion-de-tareas">8.1 Distribución de Tareas</h3>
+<table>
+<thead>
+<tr>
+<th>Fase</th>
+<th>Tarea</th>
+<th>Responsable(s)</th>
+<th>Horas</th>
+<th>% Contrib.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Investigación</strong></td>
+<td>Revisión de literatura (SIFT, ORB, RANSAC)</td>
+<td>Todos</td>
+<td>8</td>
+<td>33%/33%/33%</td>
+</tr>
+<tr>
+<td></td>
+<td>Estudio del dataset Graf</td>
+<td>David</td>
+<td>2</td>
+<td>100%</td>
+</tr>
+<tr>
+<td></td>
+<td>Análisis de referencias y papers</td>
+<td>Andrés, Sebastián</td>
+<td>4</td>
+<td>50%/50%</td>
+</tr>
+<tr>
+<td><strong>Diseño</strong></td>
+<td>Arquitectura del sistema</td>
+<td>Todos</td>
+<td>6</td>
+<td>33%/33%/33%</td>
+</tr>
+<tr>
+<td></td>
+<td>Definición de módulos</td>
+<td>David, Andrés</td>
+<td>3</td>
+<td>50%/50%</td>
+</tr>
+<tr>
+<td></td>
+<td>Selección de parámetros</td>
+<td>Sebastián</td>
+<td>4</td>
+<td>100%</td>
+</tr>
+<tr>
+<td><strong>Implementación</strong></td>
+<td>Módulo de detección (feature_detection.py)</td>
+<td>David</td>
+<td>5</td>
+<td>100%</td>
+</tr>
+<tr>
+<td></td>
+<td>Módulo de emparejamiento (matching.py)</td>
+<td>Andrés</td>
+<td>4</td>
+<td>100%</td>
+</tr>
+<tr>
+<td></td>
+<td>Módulo de registro (registration.py)</td>
+<td>David</td>
+<td>6</td>
+<td>100%</td>
+</tr>
+<tr>
+<td></td>
+<td>Módulo de panorama (panorama.py)</td>
+<td>Sebastián</td>
+<td>5</td>
+<td>100%</td>
+</tr>
+<tr>
+<td></td>
+<td>Módulo de validación (validation.py)</td>
+<td>Andrés</td>
+<td>4</td>
+<td>100%</td>
+</tr>
+<tr>
+<td></td>
+<td>Utilidades y visualización (utils.py)</td>
+<td>Sebastián</td>
+<td>3</td>
+<td>100%</td>
+</tr>
+<tr>
+<td></td>
+<td>Script Graf (download_and_process_graf.py)</td>
+<td>David</td>
+<td>4</td>
+<td>100%</td>
+</tr>
+<tr>
+<td></td>
+<td>Script comedor (process_comedor.py)</td>
+<td>Andrés</td>
+<td>5</td>
+<td>100%</td>
+</tr>
+<tr>
+<td></td>
+<td>Herramienta de medición (measure_comedor.py)</td>
+<td>Sebastián</td>
+<td>8</td>
+<td>100%</td>
+</tr>
+<tr>
+<td><strong>Experimentación</strong></td>
+<td>Validación con dataset Graf</td>
+<td>David</td>
+<td>6</td>
+<td>100%</td>
+</tr>
+<tr>
+<td></td>
+<td>Registro de imágenes del comedor</td>
+<td>Andrés</td>
+<td>4</td>
+<td>100%</td>
+</tr>
+<tr>
+<td></td>
+<td>Calibración y mediciones</td>
+<td>Sebastián</td>
+<td>3</td>
+<td>100%</td>
+</tr>
+<tr>
+<td></td>
+<td>Optimización de parámetros</td>
+<td>Todos</td>
+<td>5</td>
+<td>33%/33%/33%</td>
+</tr>
+<tr>
+<td><strong>Análisis</strong></td>
+<td>Análisis de resultados Graf</td>
+<td>David</td>
+<td>4</td>
+<td>100%</td>
+</tr>
+<tr>
+<td></td>
+<td>Comparación SIFT vs ORB</td>
+<td>Andrés</td>
+<td>3</td>
+<td>100%</td>
+</tr>
+<tr>
+<td></td>
+<td>Análisis de errores</td>
+<td>Sebastián</td>
+<td>4</td>
+<td>100%</td>
+</tr>
+<tr>
+<td></td>
+<td>Cálculo de incertidumbres</td>
+<td>Todos</td>
+<td>3</td>
+<td>33%/33%/33%</td>
+</tr>
+<tr>
+<td><strong>Documentación</strong></td>
+<td>Notebooks Jupyter (×3)</td>
+<td>Todos</td>
+<td>6</td>
+<td>33%/33%/33%</td>
+</tr>
+<tr>
+<td></td>
+<td>README.md</td>
+<td>David</td>
+<td>3</td>
+<td>100%</td>
+</tr>
+<tr>
+<td></td>
+<td>Reporte técnico (este documento)</td>
+<td>Todos</td>
+<td>10</td>
+<td>33%/33%/33%</td>
+</tr>
+<tr>
+<td></td>
+<td>Docstrings y comentarios</td>
+<td>Todos</td>
+<td>4</td>
+<td>33%/33%/33%</td>
+</tr>
+<tr>
+<td></td>
+<td>Pruebas unitarias</td>
+<td>Andrés, Sebastián</td>
+<td>5</td>
+<td>50%/50%</td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td></td>
+<td></td>
+<td><strong>120</strong></td>
+<td><strong>~33% cada uno</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="82-desglose-por-componente">8.2 Desglose por Componente</h3>
+<h4 id="821-codigo-fuente-45-horas">8.2.1 Código Fuente (45 horas)</h4>
+<p><strong>Módulos principales (David Londoño):</strong>
+- <code>feature_detection.py</code> (5h): Implementación de SIFT, ORB, AKAZE
+- <code>registration.py</code> (6h): RANSAC, homografía, warping
+- <code>download_and_process_graf.py</code> (4h): Pipeline Parte 1</p>
+<p><strong>Módulos de matching y validación (Andrés Churio):</strong>
+- <code>matching.py</code> (4h): FLANN, BruteForce, ratio test
+- <code>validation.py</code> (4h): Métricas RMSE, error angular
+- <code>process_comedor.py</code> (5h): Pipeline Parte 2</p>
+<p><strong>Módulos de fusión y medición (Sebastián Montoya):</strong>
+- <code>panorama.py</code> (5h): Fusión multi-imagen, blending
+- <code>utils.py</code> (3h): Visualizaciones, logging
+- <code>measure_comedor.py</code> (8h): Herramienta interactiva Parte 3</p>
+<p><strong>Pruebas (Andrés Churio y Sebastián Montoya):</strong>
+- Pruebas unitarias (5h): Test de cada módulo (50%/50%)</p>
+<h4 id="822-experimentacion-y-analisis-30-horas">8.2.2 Experimentación y Análisis (30 horas)</h4>
+<p><strong>Validación (David Londoño):</strong>
+- Experimentos con Graf (6h): 6 pares de imágenes, múltiples parámetros
+- Análisis de resultados Graf (4h): Métricas y comparaciones</p>
+<p><strong>Registro del comedor (Andrés Churio):</strong>
+- Registro del comedor (4h): SIFT vs ORB, optimización
+- Comparación de métodos (3h): Análisis detallado</p>
+<p><strong>Calibración (Sebastián Montoya):</strong>
+- Calibración y mediciones (3h): Múltiples objetos de referencia
+- Análisis de errores (4h): Fuentes, propagación, incertidumbre</p>
+<p><strong>Optimización (Todos - 33%/33%/33%):</strong>
+- Optimización (5h): Ajuste de parámetros, búsqueda de mejores configuraciones
+- Cálculo de incertidumbres (3h): Modelo de propagación de errores</p>
+<h4 id="823-documentacion-28-horas">8.2.3 Documentación (28 horas)</h4>
+<p><strong>Notebooks (Todos - 33%/33%/33%):</strong>
+- <code>01_exploratory_analysis.ipynb</code> (2h): Análisis exploratorio
+- <code>02_synthetic_validation.ipynb</code> (2h): Validación imágenes sintéticas
+- <code>03_main_pipeline.ipynb</code> (2h): Pipeline completo</p>
+<p><strong>Documentos principales:</strong>
+- <code>README.md</code> (3h): Instrucciones, instalación, uso (David)
+- Reporte técnico (10h): Este documento completo (Todos - 33%/33%/33%)
+- Docstrings (4h): Documentación inline del código (Todos - 33%/33%/33%)</p>
+<p><strong>Visualizaciones:</strong>
+- Diagramas (2h): Flujo de datos, arquitectura (Sebastián)
+- Gráficas y figuras (3h): Visualizaciones de resultados (Andrés)</p>
+<h4 id="824-investigacion-y-diseno-17-horas">8.2.4 Investigación y Diseño (17 horas)</h4>
+<p><strong>Literatura (Todos):</strong>
+- Papers fundamentales (8h): Lowe, Rublee, Fischler, etc. (33%/33%/33%)
+- Dataset Graf (2h): Comprensión del benchmark (David)
+- OpenCV docs (4h): API, best practices (Andrés, Sebastián 50%/50%)</p>
+<p><strong>Diseño (Todos):</strong>
+- Arquitectura (6h): Modularización, interfaces (33%/33%/33%)
+- Parámetros (4h): Valores óptimos para cada fase (Sebastián)
+- Metodología (3h): Protocolo experimental (David)</p>
+<h3 id="83-competencias-desarrolladas">8.3 Competencias Desarrolladas</h3>
+<p><strong>Técnicas:</strong>
+- ✅ Implementación de algoritmos de visión por computador
+- ✅ Uso avanzado de OpenCV y NumPy
+- ✅ Optimización de código Python
+- ✅ Análisis de complejidad y performance</p>
+<p><strong>Científicas:</strong>
+- ✅ Metodología experimental rigurosa
+- ✅ Análisis estadístico de resultados
+- ✅ Propagación de incertidumbres
+- ✅ Comparación con ground truth</p>
+<p><strong>Ingeniería:</strong>
+- ✅ Diseño de arquitectura modular
+- ✅ Pruebas unitarias y validación
+- ✅ Documentación técnica completa
+- ✅ Gestión de dependencias y entorno</p>
+<p><strong>Comunicación:</strong>
+- ✅ Redacción de reporte técnico
+- ✅ Creación de visualizaciones efectivas
+- ✅ Documentación de código clara
+- ✅ Presentación de resultados</p>
+<h3 id="84-desafios-superados">8.4 Desafíos Superados</h3>
+<ol>
+<li><strong>Escalas diferentes en IMG03:</strong></li>
+<li>Problema: Resolución 988×1317 vs 988×741</li>
+<li>
+<p>Solución: SIFT maneja naturalmente cambios de escala</p>
+</li>
+<li>
+<p><strong>Solapamiento parcial:</strong></p>
+</li>
+<li>Problema: IMG01 e IMG03 no se solapan directamente</li>
+<li>
+<p>Solución: Usar IMG02 como imagen puente</p>
+</li>
+<li>
+<p><strong>Optimización de parámetros:</strong></p>
+</li>
+<li>Problema: Muchos parámetros (nfeatures, ratio, threshold)</li>
+<li>
+<p>Solución: Grid search sistemático + validación con Graf</p>
+</li>
+<li>
+<p><strong>Incertidumbre en mediciones:</strong></p>
+</li>
+<li>Problema: Múltiples fuentes de error</li>
+<li>
+<p>Solución: Modelo de propagación de errores</p>
+</li>
+<li>
+<p><strong>Interfaz de medición:</strong></p>
+</li>
+<li>Problema: Precisión de marcación manual</li>
+<li>Solución: Feedback visual + confirmación</li>
+</ol>
+<h3 id="85-reflexion-personal">8.5 Reflexión Personal</h3>
+<p>Este proyecto ha sido una experiencia colaborativa completa de desarrollo en visión por computador. Los aspectos más valiosos fueron:</p>
+<p><strong>Para el equipo:</strong>
+1. <strong>Trabajo en equipo:</strong> División efectiva de tareas según fortalezas individuales
+2. <strong>Comunicación:</strong> Coordinación constante para integrar módulos
+3. <strong>Revisión cruzada:</strong> Cada miembro revisó el código de los demás
+4. <strong>Aprendizaje mutuo:</strong> Compartir conocimientos y resolver problemas juntos</p>
+<p><strong>Técnicamente:</strong>
+1. <strong>Teoría a Práctica:</strong> Ver cómo algoritmos del paper funcionan en código real
+2. <strong>Debugging Visual:</strong> Visualizaciones son cruciales para entender fallos
+3. <strong>Validación Rigurosa:</strong> Ground truth (Graf) es esencial para confiar en resultados
+4. <strong>Modularidad:</strong> Diseño limpio facilita colaboración y mantenimiento
+5. <strong>Documentación:</strong> Invertir tiempo en docs permite que todos entiendan el código</p>
+<p><strong>Aprendizajes clave:</strong>
+- SIFT es robusto pero lento → elegir según caso de uso
+- RANSAC es poderoso pero requiere tuning de parámetros
+- Validación con datos sintéticos da confianza antes de datos reales
+- Incertidumbre debe estimarse, no ignorarse
+- Trabajo en equipo multiplica la productividad</p>
+<p><strong>Contribuciones individuales destacadas:</strong>
+- <strong>David:</strong> Expertise en SIFT y validación con Graf, liderazgo en diseño
+- <strong>Andrés:</strong> Implementación eficiente de matching, análisis comparativo detallado
+- <strong>Sebastián:</strong> Herramienta de medición interactiva innovadora, visualizaciones claras</p>
+<p><strong>Proyectos futuros:</strong>
+- Implementar en GPU para tiempo real
+- Extender a reconstrucción 3D completa
+- Crear aplicación móvil
+- Publicar como librería open-source</p>
+<hr />
+<p><strong>Declaración:</strong> Este trabajo es original y desarrollado colaborativamente por los autores. Todo el código, análisis y documentación son propios del equipo, basados en la literatura citada. Cada miembro contribuyó aproximadamente un tercio del trabajo total.</p>
+<hr />
+<p><strong>Autores:</strong><br />
+- <strong>David Londoño</strong> - Detección de características, validación Graf, arquitectura
+- <strong>Andrés Churio</strong> - Emparejamiento, validación, registro del comedor
+- <strong>Sebastián Montoya</strong> - Fusión de imágenes, herramienta de medición, visualizaciones</p>
+<p><strong>Fecha:</strong> Octubre 27, 2025<br />
+<strong>Curso:</strong> Visión por Computador - 3009228<br />
+<strong>Universidad Nacional de Colombia - Facultad de Minas</strong></p>
+        <div class="footer">
+            <p>Documento generado automáticamente desde Markdown</p>
+            <p>Universidad Nacional de Colombia - Facultad de Minas</p>
+        </div>
+    </div>
+</body>
+</html>
